@@ -64,7 +64,7 @@ img{max-width:100%;display:block}
 .narrow{max-width:780px;margin:0 auto}
 section{padding:72px 0}
 h1,h2,h3{line-height:1.12;margin:0 0 .5em;letter-spacing:-.02em}
-h1{font-size:clamp(2.1rem,5.4vw,3.5rem);font-weight:800}
+h1{font-size:clamp(2rem,4.4vw,3rem);font-weight:800}
 h2{font-size:clamp(1.7rem,3.8vw,2.4rem);font-weight:800}
 h3{font-size:1.12rem;font-weight:750;letter-spacing:-.01em}
 p{margin:0 0 1em}
@@ -87,12 +87,12 @@ p{margin:0 0 1em}
 .langlink:hover{opacity:1}
 
 /* hero */
-.hero{padding:56px 0 64px;position:relative}
+.hero{padding:44px 0 56px;position:relative}
 .hero::before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:100%;background:radial-gradient(900px 420px at 15% 0%,var(--brand-soft),transparent 70%);opacity:.7;pointer-events:none;z-index:0}
 .hero>*{position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center}
-.checks{list-style:none;padding:0;margin:22px 0 30px}
-.checks li{padding-left:32px;position:relative;margin-bottom:11px}
+.checks{list-style:none;padding:0;margin:18px 0 26px}
+.checks li{padding-left:32px;position:relative;margin-bottom:9px}
 .checks li::before{content:"✓";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:900;font-size:.78rem;display:grid;place-items:center}
 .img-slot{background:var(--surface);border:2px dashed var(--line);border-radius:var(--radius);aspect-ratio:4/5;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.93rem;padding:22px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg)}
 .img-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
@@ -116,8 +116,8 @@ p{margin:0 0 1em}
 .pain-list li{background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:15px 19px;margin-bottom:11px;text-align:left}
 
 /* tabela comparativa */
-.vs{width:100%;border-collapse:collapse;margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.vs th,.vs td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top}
+.vs{width:100%;max-width:100%;table-layout:fixed;border-collapse:collapse;margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.vs th,.vs td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top;overflow-wrap:break-word}
 .vs thead th{background:var(--raise);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
 .vs thead th:last-child{color:var(--brand)}
 .vs tbody tr:last-child td{border-bottom:0}
@@ -128,8 +128,8 @@ p{margin:0 0 1em}
 /* prévia do mito */
 .myth-demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:28px;box-shadow:var(--shadow)}
 .myth-demo .head{background:var(--raise);padding:12px 18px;font-size:.78rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.myth-demo table{width:100%;border-collapse:collapse}
-.myth-demo td{padding:15px 18px;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top}
+.myth-demo table{width:100%;max-width:100%;table-layout:fixed;border-collapse:collapse}
+.myth-demo td{padding:15px 18px;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top;overflow-wrap:break-word}
 .myth-demo tr:last-child td{border-bottom:0}
 .myth-demo td:first-child{width:38%;font-weight:700}
 .myth-demo .src{display:block;margin-top:6px;font-size:.82rem;color:var(--muted)}
@@ -153,7 +153,8 @@ p{margin:0 0 1em}
 .offer li::before{content:"✓";position:absolute;left:4px;color:var(--brand);font-weight:900;font-size:.85rem}
 .from{color:var(--muted);text-decoration:line-through;font-size:.93rem}
 .price{font-size:2.5rem;font-weight:900;line-height:1;margin:6px 0 4px;letter-spacing:-.03em}
-.save{display:inline-block;background:var(--brand-soft);color:var(--brand);font-size:.78rem;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:6px}
+.save{align-self:flex-start;background:var(--brand-soft);color:var(--brand);font-size:.78rem;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:6px}
+.from,.price{align-self:flex-start}
 
 /* autor */
 .author{display:grid;grid-template-columns:230px 1fr;gap:38px;align-items:center}
