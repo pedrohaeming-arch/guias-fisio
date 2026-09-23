@@ -4,159 +4,210 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pocket Physiotherapy Guides</title>
-<meta name="description" content="Short, illustrated, straight-to-the-point guides with exercises, myths debunked and a ready-made routine — every claim tied to a source you can check.">
+<meta name="description" content="Short, illustrated guides written by a physiotherapist, with the source alongside every claim. Know what to do about your pain — and what to stop doing.">
+<meta property="og:title" content="Stop guessing what to do about your pain">
+<meta property="og:description" content="Illustrated pocket guides written by a physiotherapist, with a source on every claim.">
+<meta property="og:type" content="website">
 <!--
 =====================================================================
   HOW TO EDIT THIS PAGE  (read once)
 =====================================================================
-  1) The easy way: open this file in your browser with  ?edit  at the
-     end of the address (e.g. index.html?edit ). A bar appears at the
-     top: click "Edit text", change whatever you like directly on the
-     page, click the images to swap them, then click "Download
-     finished page". The downloaded file is the one you publish.
-  2) Checkout links, prices and the Pixel: change them in the CONFIG
-     block just below.
-  3) The ad's UTM parameters (utm_source, utm_campaign...) are passed
-     through to the checkout link automatically.
+  1) The easy way: open the page with  ?edit  at the end of the
+     address. A bar appears at the top: click "Edit text", change
+     whatever you like on the page, click the images to swap them,
+     then click "Download finished page". That file is what you publish.
+  2) Checkout links, prices and Pixel: the CONFIG block just below.
+  3) The ad's UTMs are passed through to the checkout automatically.
 =====================================================================
 -->
 <script>
 const CONFIG = {
   // Checkout link for each offer (Hotmart, Kiwify, Gumroad, Stripe, etc.)
-  checkoutGuide:  "https://YOUR-CHECKOUT.com/guide",
-  checkoutBundle: "https://YOUR-CHECKOUT.com/bundle",
+  checkoutGuia:   "https://YOUR-CHECKOUT.com/guide",
+  checkoutCombo:  "https://YOUR-CHECKOUT.com/bundle",
   checkoutManual: "https://YOUR-CHECKOUT.com/manual",
   // Meta Pixel ID (leave "" to skip loading it)
   metaPixelId: "",
-  // Support WhatsApp, digits only with country and area code (leave "" to hide the button)
+  // Support WhatsApp, digits only with country and area code (leave "" to hide)
   whatsapp: "",
-  // Link to the Portuguese version (leave "" to hide the language link)
-  otherLanguageUrl: "../",
-  otherLanguageLabel: "Português"
+  // Link to the other language (leave "" to hide)
+  outraLinguaUrl: "../",
+  outraLinguaLabel: "Português"
 };
 </script>
 <style>
 :root{
-  --bg:#fbfaf7; --surface:#ffffff; --ink:#1d2327; --muted:#5b666d;
+  --bg:#fbfaf7; --surface:#ffffff; --raise:#f4f1ea; --ink:#16191c; --muted:#5b666d;
   --line:#e6e2da; --brand:#0f766e; --brand-ink:#ffffff; --brand-soft:#e3f2ef;
-  --accent:#c2410c; --accent-soft:#fdecdf; --warn:#fff6d6;
-  --radius:16px; --shadow:0 10px 30px rgba(20,30,40,.08);
+  --accent:#c2410c; --accent-soft:#fdecdf; --warn:#fff6d6; --warn-line:#e8d48a;
+  --radius:16px; --shadow:0 10px 30px rgba(20,30,40,.08); --shadow-lg:0 24px 60px rgba(20,30,40,.14);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#111517; --surface:#191e21; --ink:#eef1f2; --muted:#a3aeb4;
-    --line:#2a3135; --brand:#2dd4bf; --brand-ink:#0b1b19; --brand-soft:#14302c;
-    --accent:#fb923c; --accent-soft:#3a2416; --warn:#3a3313; --shadow:none;
+    --bg:#0f1214; --surface:#181d20; --raise:#20262a; --ink:#eef1f2; --muted:#a3aeb4;
+    --line:#2a3135; --brand:#2dd4bf; --brand-ink:#08211e; --brand-soft:#123430;
+    --accent:#fb923c; --accent-soft:#3a2416; --warn:#3a3313; --warn-line:#5c5020;
+    --shadow:none; --shadow-lg:none;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#111517; --surface:#191e21; --ink:#eef1f2; --muted:#a3aeb4;
-  --line:#2a3135; --brand:#2dd4bf; --brand-ink:#0b1b19; --brand-soft:#14302c;
-  --accent:#fb923c; --accent-soft:#3a2416; --warn:#3a3313; --shadow:none;
+  --bg:#0f1214; --surface:#181d20; --raise:#20262a; --ink:#eef1f2; --muted:#a3aeb4;
+  --line:#2a3135; --brand:#2dd4bf; --brand-ink:#08211e; --brand-soft:#123430;
+  --accent:#fb923c; --accent-soft:#3a2416; --warn:#3a3313; --warn-line:#5c5020;
+  --shadow:none; --shadow-lg:none;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-section{padding:64px 0}
-h1,h2,h3{line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}
-h1{font-size:clamp(2rem,5vw,3.1rem)}
-h2{font-size:clamp(1.6rem,3.6vw,2.2rem)}
-h3{font-size:1.15rem}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+.narrow{max-width:780px;margin:0 auto}
+section{padding:72px 0}
+h1,h2,h3{line-height:1.12;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.1rem,5.4vw,3.5rem);font-weight:800}
+h2{font-size:clamp(1.7rem,3.8vw,2.4rem);font-weight:800}
+h3{font-size:1.12rem;font-weight:750;letter-spacing:-.01em}
 p{margin:0 0 1em}
 .muted{color:var(--muted)}
-.eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:6px 12px;border-radius:999px;margin-bottom:16px}
+.lead{font-size:1.15rem;color:var(--muted)}
+.eyebrow{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:7px 14px;border-radius:999px;margin-bottom:18px}
 .center{text-align:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-weight:800;font-size:1.05rem;padding:18px 28px;border-radius:14px;text-decoration:none;box-shadow:0 8px 20px rgba(194,65,12,.25);transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--accent);color:#fff;font-weight:800;font-size:1.06rem;padding:19px 30px;border-radius:14px;text-decoration:none;box-shadow:0 10px 24px rgba(194,65,12,.28);transition:transform .15s,box-shadow .15s;text-align:center}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(194,65,12,.34)}
 .btn.alt{background:var(--brand);color:var(--brand-ink);box-shadow:none}
+.btn.alt:hover{box-shadow:0 10px 24px rgba(15,118,110,.25)}
 .btn.full{width:100%}
-.small{font-size:.85rem}
+.small{font-size:.86rem}
+.trustline{font-size:.87rem;color:var(--muted);margin-top:14px}
+.trustline b{color:var(--ink);font-weight:700}
 
 /* announcement bar */
-.topbar{background:var(--ink);color:var(--bg);text-align:center;font-size:.9rem;font-weight:600;padding:10px 16px;position:relative}
-.langlink{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--bg);opacity:.75;text-decoration:underline;font-weight:600;font-size:.8rem;display:none}
+.topbar{background:var(--ink);color:var(--bg);text-align:center;font-size:.9rem;font-weight:650;padding:11px 16px;position:relative}
+.langlink{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--bg);opacity:.7;text-decoration:underline;font-weight:650;font-size:.8rem;display:none}
 .langlink:hover{opacity:1}
 
 /* hero */
-.hero{padding:48px 0 64px}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero .lead{font-size:1.15rem;color:var(--muted)}
-.checks{list-style:none;padding:0;margin:20px 0 28px}
-.checks li{padding-left:30px;position:relative;margin-bottom:8px}
-.checks li::before{content:"✓";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:900;font-size:.8rem;display:grid;place-items:center}
-.img-slot{background:var(--surface);border:2px dashed var(--line);border-radius:var(--radius);aspect-ratio:4/5;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.95rem;padding:20px;overflow:hidden;position:relative}
+.hero{padding:56px 0 64px;position:relative}
+.hero::before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:100%;background:radial-gradient(900px 420px at 15% 0%,var(--brand-soft),transparent 70%);opacity:.7;pointer-events:none;z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center}
+.checks{list-style:none;padding:0;margin:22px 0 30px}
+.checks li{padding-left:32px;position:relative;margin-bottom:11px}
+.checks li::before{content:"✓";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:900;font-size:.78rem;display:grid;place-items:center}
+.img-slot{background:var(--surface);border:2px dashed var(--line);border-radius:var(--radius);aspect-ratio:4/5;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.93rem;padding:22px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg)}
 .img-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .img-slot.wide{aspect-ratio:16/10}
-.img-slot.round{aspect-ratio:1;border-radius:50%;max-width:220px;margin:0 auto}
+.img-slot.round{aspect-ratio:1;border-radius:50%;max-width:210px;margin:0 auto;box-shadow:var(--shadow)}
 .img-slot.filled{border-style:solid}
+
+/* trust strip */
+.trustbar{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
+.trustbar .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.trustitem{display:flex;gap:11px;align-items:flex-start;font-size:.93rem;line-height:1.45}
+.trustitem .ic{flex:0 0 26px;height:26px;border-radius:8px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:900;font-size:.82rem}
 
 /* cards */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
 .num{width:36px;height:36px;border-radius:10px;background:var(--brand);color:var(--brand-ink);font-weight:800;display:grid;place-items:center;margin-bottom:14px}
 .pain{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.pain-list{list-style:none;padding:0;margin:24px auto 0;max-width:680px}
-.pain-list li{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.pain-list{list-style:none;padding:0;margin:26px auto 0;max-width:700px}
+.pain-list li{background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:15px 19px;margin-bottom:11px;text-align:left}
 
-/* who it's for */
+/* comparison table */
+.vs{width:100%;border-collapse:collapse;margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.vs th,.vs td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top}
+.vs thead th{background:var(--raise);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
+.vs thead th:last-child{color:var(--brand)}
+.vs tbody tr:last-child td{border-bottom:0}
+.vs td:first-child{font-weight:700;width:26%}
+.vs td:last-child{background:var(--brand-soft)}
+.vs .row-label{color:var(--muted);font-weight:700}
+
+/* myth preview */
+.myth-demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:28px;box-shadow:var(--shadow)}
+.myth-demo .head{background:var(--raise);padding:12px 18px;font-size:.78rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.myth-demo table{width:100%;border-collapse:collapse}
+.myth-demo td{padding:15px 18px;border-bottom:1px solid var(--line);font-size:.95rem;vertical-align:top}
+.myth-demo tr:last-child td{border-bottom:0}
+.myth-demo td:first-child{width:38%;font-weight:700}
+.myth-demo .src{display:block;margin-top:6px;font-size:.82rem;color:var(--muted)}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px;counter-reset:s}
+.step{position:relative;padding-top:8px}
+.step .dot{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-weight:900;font-size:1.1rem;display:grid;place-items:center;margin-bottom:16px}
+
+/* who it is for */
 .yes li::before{content:"✓"}
 .no li::before{content:"✕";background:var(--accent-soft);color:var(--accent)}
 
 /* offers */
-.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin-top:32px}
-.offer{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;position:relative}
-.offer.featured{border:2px solid var(--accent);box-shadow:var(--shadow)}
-.badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.75rem;font-weight:800;padding:5px 12px;border-radius:999px;white-space:nowrap}
-.offer ul{list-style:none;padding:0;margin:16px 0 24px;flex:1}
-.offer li{padding:6px 0 6px 24px;position:relative;border-bottom:1px solid var(--line);font-size:.95rem}
-.offer li::before{content:"•";position:absolute;left:6px;color:var(--brand);font-weight:900}
-.from{color:var(--muted);text-decoration:line-through;font-size:.95rem}
-.price{font-size:2.4rem;font-weight:900;line-height:1;margin:6px 0 4px}
-.price small{font-size:1rem;font-weight:700}
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;margin-top:38px}
+.offer{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 24px;display:flex;flex-direction:column;position:relative}
+.offer.featured{border:2px solid var(--accent);box-shadow:var(--shadow-lg);transform:scale(1.02)}
+.badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.73rem;font-weight:800;padding:6px 14px;border-radius:999px;white-space:nowrap;letter-spacing:.04em}
+.offer ul{list-style:none;padding:0;margin:18px 0 26px;flex:1}
+.offer li{padding:8px 0 8px 25px;position:relative;border-bottom:1px solid var(--line);font-size:.94rem}
+.offer li::before{content:"✓";position:absolute;left:4px;color:var(--brand);font-weight:900;font-size:.85rem}
+.from{color:var(--muted);text-decoration:line-through;font-size:.93rem}
+.price{font-size:2.5rem;font-weight:900;line-height:1;margin:6px 0 4px;letter-spacing:-.03em}
+.save{display:inline-block;background:var(--brand-soft);color:var(--brand);font-size:.78rem;font-weight:800;padding:4px 10px;border-radius:999px;margin-bottom:6px}
 
 /* author */
-.author{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:center}
+.author{display:grid;grid-template-columns:230px 1fr;gap:38px;align-items:center}
 
 /* testimonials */
 .quote{font-style:italic}
 .quote-by{font-style:normal;font-weight:700;font-size:.9rem;color:var(--muted)}
-.note{background:var(--warn);border-radius:12px;padding:12px 16px;font-size:.88rem;margin-top:20px}
+.note{background:var(--warn);border:1px solid var(--warn-line);border-radius:12px;padding:14px 18px;font-size:.88rem;margin-top:22px}
 
 /* guarantee */
-.guarantee{display:flex;gap:28px;align-items:center;background:var(--brand-soft);border-radius:24px;padding:36px}
-.seal{flex:0 0 120px;height:120px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;text-align:center;font-weight:900;line-height:1.1}
-.seal b{font-size:2.4rem;display:block}
+.guarantee{display:flex;gap:30px;align-items:center;background:var(--brand-soft);border-radius:24px;padding:38px}
+.seal{flex:0 0 124px;height:124px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;text-align:center;font-weight:900;line-height:1.05}
+.seal b{font-size:2.5rem;display:block}
 
 /* FAQ */
-details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px}
-summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
-summary::after{content:"+";font-size:1.3rem;color:var(--brand)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:17px 21px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.35rem;color:var(--brand);line-height:1}
 details[open] summary::after{content:"–"}
-details p{margin:12px 0 0;color:var(--muted)}
+details p{margin:13px 0 0;color:var(--muted)}
 
-footer{border-top:1px solid var(--line);padding:32px 0;font-size:.85rem;color:var(--muted);text-align:center}
+footer{border-top:1px solid var(--line);padding:36px 0 110px;font-size:.85rem;color:var(--muted);text-align:center}
 
-.wa{position:fixed;right:16px;bottom:16px;background:#25d366;color:#fff;border-radius:999px;padding:12px 18px;font-weight:800;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.2);display:none}
+.wa{position:fixed;right:16px;bottom:86px;background:#25d366;color:#fff;border-radius:999px;padding:12px 18px;font-weight:800;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.2);display:none;z-index:40}
 
-/* ===== edit mode (only appears with ?edit in the address) ===== */
-.editbar{display:none;position:sticky;top:0;z-index:50;background:#111;color:#fff;padding:10px 16px;gap:8px;flex-wrap:wrap;align-items:center;font-size:.9rem}
+/* sticky mobile CTA */
+.stickybar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:11px 16px;display:none;gap:12px;align-items:center;z-index:45;box-shadow:0 -6px 24px rgba(0,0,0,.12)}
+.stickybar .txt{flex:1;font-size:.82rem;line-height:1.3;color:var(--muted)}
+.stickybar .txt b{display:block;color:var(--ink);font-size:.95rem}
+.stickybar .btn{padding:13px 20px;font-size:.95rem;border-radius:11px;white-space:nowrap}
+
+/* ===== edit mode (only with ?edit in the address) ===== */
+.editbar{display:none;position:sticky;top:0;z-index:60;background:#111;color:#fff;padding:10px 16px;gap:8px;flex-wrap:wrap;align-items:center;font-size:.9rem}
 .editbar button{background:#fff;color:#111;border:0;border-radius:8px;padding:8px 12px;font-weight:700;cursor:pointer}
 .editbar button.on{background:#facc15}
 .editbar span{opacity:.75;margin-left:auto}
 body.editing [data-edit]{outline:1px dashed #facc15;outline-offset:3px;cursor:text}
 body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
 
-@media (max-width:860px){
+@media (max-width:880px){
   .hero-grid,.author,.grid2{grid-template-columns:1fr}
-  .grid3,.offers{grid-template-columns:1fr}
-  .offer.featured{order:-1}
+  .grid3,.offers,.steps{grid-template-columns:1fr}
+  .trustbar .wrap{grid-template-columns:1fr;gap:12px}
+  .offer.featured{order:-1;transform:none}
   .guarantee{flex-direction:column;text-align:center}
-  section{padding:48px 0}
-  .img-slot.hero-img{max-width:360px;margin:0 auto}
-  .topbar{padding-right:90px}
+  section{padding:52px 0}
+  .img-slot.hero-img{max-width:340px;margin:0 auto}
+  .topbar{padding-right:84px;font-size:.84rem}
+  .author{text-align:center}
+  .stickybar{display:flex}
+  .vs td:first-child{width:34%}
+  .vs th,.vs td{padding:12px 11px;font-size:.88rem}
+  .myth-demo td{padding:12px 14px;font-size:.9rem}
 }
 </style>
 </head>
@@ -166,54 +217,100 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
   <button id="btnEdit">✏️ Edit text</button>
   <button id="btnTheme">🌓 Theme</button>
   <button id="btnSave">⬇️ Download finished page</button>
-  <span>Click the images to swap them. Checkout links and prices: the CONFIG block in the code.</span>
+  <span>Click the images to swap them. Links and prices: the CONFIG block in the code.</span>
 </div>
 
-<div class="topbar"><span data-edit>🎉 Launch price — while the first group lasts</span><a class="langlink" id="langlink" href="#"></a></div>
+<div class="topbar"><span data-edit>🎉 Launch price — the first group pays less</span><a class="langlink" id="langlink" href="#"></a></div>
 
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow" data-edit>Pocket physiotherapy guides</span>
-      <h1 data-edit>Know exactly what to do about your pain — in a guide that fits in your pocket</h1>
-      <p class="lead" data-edit>Short, illustrated, straight-to-the-point guides written by a physiotherapist, with every piece of information tied to a source you can check.</p>
+      <h1 data-edit>Stop guessing what to do about your pain</h1>
+      <p class="lead" data-edit>Short, illustrated guides written by a physiotherapist, with the source alongside every claim. You come away knowing what to do — and what to stop doing.</p>
       <ul class="checks">
-        <li data-edit>3 to 5 illustrated exercises, with form and reps</li>
-        <li data-edit>The most common myths debunked, with the source alongside</li>
-        <li data-edit>A ready-made routine to follow day to day</li>
-        <li data-edit>PDF on your phone: read it anywhere</li>
+        <li data-edit><strong>You learn what to do:</strong> 3 to 5 illustrated exercises, with form, timing and reps</li>
+        <li data-edit><strong>And what to stop doing:</strong> the most common myths debunked, each with its source</li>
+        <li data-edit><strong>Nothing to memorise:</strong> a ready-made routine to stick on the fridge</li>
+        <li data-edit><strong>Short on purpose:</strong> a pocket PDF that reads comfortably on a phone</li>
       </ul>
-      <a class="btn cta" href="#offers" data-edit>Get my guide →</a>
-      <p class="small muted" style="margin-top:12px" data-edit>Instant access by email • Secure checkout • 7-day guarantee</p>
+      <a class="btn cta" href="#ofertas" data-edit>Show me what to do →</a>
+      <p class="trustline" data-edit><b>Instant access</b> by email · <b>Secure checkout</b> · <b>7-day</b> guarantee</p>
     </div>
     <div class="img-slot hero-img" data-img>Click to add the guide mockup<br>(3D cover or phone photo)</div>
   </div>
 </header>
 
-<!-- ============ PAIN ============ -->
+<!-- ============ FAIXA DE CONFIANÇA ============ -->
+<div class="trustbar">
+  <div class="wrap">
+    <div class="trustitem"><span class="ic">✓</span><span data-edit><strong>Written by a physiotherapist</strong><br>registered with the licensing board</span></div>
+    <div class="trustitem"><span class="ic">✓</span><span data-edit><strong>A source on every claim</strong><br>check it yourself if you want</span></div>
+    <div class="trustitem"><span class="ic">✓</span><span data-edit><strong>7-day guarantee</strong><br>refunded, no questions asked</span></div>
+  </div>
+</div>
+
+<!-- ============ DOR ============ -->
 <section class="pain">
   <div class="wrap center">
-    <h2 data-edit>Sound familiar?</h2>
-    <ul class="pain-list" style="text-align:left">
-      <li data-edit>You searched your pain online and came away with five different answers</li>
-      <li data-edit>You were handed a sheet of exercises and can't remember how to do any of them</li>
-      <li data-edit>You don't know whether to rest, stretch or strengthen</li>
-      <li data-edit>Someone gave you advice and you weren't sure it was true</li>
+    <h2 data-edit>If you've ever searched your pain online, you know this:</h2>
+    <ul class="pain-list">
+      <li data-edit>Five sites, five different answers — and none of them saying who to trust</li>
+      <li data-edit>A sheet of exercises you can no longer remember how to do</li>
+      <li data-edit>The rest-stretch-or-strengthen question that nobody answers properly</li>
+      <li data-edit>Advice from someone you know that might be right — or might be setting you back</li>
     </ul>
-    <p style="margin-top:24px" data-edit><strong>The pocket guide fixes that:</strong> one thing at a time, in the right order, no padding.</p>
+    <p class="narrow" style="margin-top:28px" data-edit>The problem is almost never too little information. It is too much information with no source. <strong>The pocket guide fixes that by cutting:</strong> one thing at a time, in the right order, with the source alongside every claim.</p>
   </div>
 </section>
 
-<!-- ============ WHAT'S INSIDE ============ -->
+<!-- ============ COMPARAÇÃO ============ -->
 <section>
+  <div class="wrap narrow">
+    <div class="center">
+      <span class="eyebrow" data-edit>The difference</span>
+      <h2 data-edit>Why searching is not enough</h2>
+    </div>
+    <table class="vs">
+      <thead>
+        <tr><th data-edit></th><th data-edit>Searching around</th><th data-edit>Pocket guide</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label" data-edit>Who wrote it</td>
+          <td data-edit>Often impossible to tell</td>
+          <td data-edit>A registered physiotherapist</td>
+        </tr>
+        <tr>
+          <td class="row-label" data-edit>Where the information comes from</td>
+          <td data-edit>Rarely cited</td>
+          <td data-edit>A source alongside every claim</td>
+        </tr>
+        <tr>
+          <td class="row-label" data-edit>How long it takes</td>
+          <td data-edit>Hours jumping between tabs</td>
+          <td data-edit>One short read, start to finish</td>
+        </tr>
+        <tr>
+          <td class="row-label" data-edit>What to do tomorrow</td>
+          <td data-edit>You work it out alone</td>
+          <td data-edit>A ready-made routine, step by step</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ O QUE TEM DENTRO ============ -->
+<section style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="center">
       <span class="eyebrow" data-edit>What's inside</span>
       <h2 data-edit>Every guide follows the same 6 blocks</h2>
-      <p class="muted" data-edit>You always know where to find each thing, in any guide in the collection.</p>
+      <p class="muted narrow" data-edit>You always know where to find each thing, in any guide in the collection.</p>
     </div>
-    <div class="grid3" style="margin-top:32px">
+    <div class="grid3" style="margin-top:34px">
       <div class="card"><div class="num">1</div><h3 data-edit>The promise</h3><p class="muted" data-edit>What you'll be able to do once you've read it.</p></div>
       <div class="card"><div class="num">2</div><h3 data-edit>What happens in your body</h3><p class="muted" data-edit>A plain explanation, with no spare jargon.</p></div>
       <div class="card"><div class="num">3</div><h3 data-edit>What to do</h3><p class="muted" data-edit>Step by step, each step with a name that's easy to remember.</p></div>
@@ -221,17 +318,48 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
       <div class="card"><div class="num">5</div><h3 data-edit>What to avoid</h3><p class="muted" data-edit>A myth vs. reality table, with the source for each one.</p></div>
       <div class="card"><div class="num">6</div><h3 data-edit>Ready-made routine</h3><p class="muted" data-edit>A checklist to stick on the fridge and follow.</p></div>
     </div>
-    <div class="img-slot wide" data-img style="margin-top:32px">Click to add a preview of the inside pages</div>
+
+    <div class="narrow">
+      <div class="myth-demo">
+        <div class="head" data-edit>Preview — one myth from inside the guide</div>
+        <table>
+          <tr>
+            <td data-edit>Put a real myth from your guide here</td>
+            <td data-edit>Write the reality in a line or two, the way you'd explain it to a patient.<span class="src" data-edit>Source: document name, institution, year</span></td>
+          </tr>
+          <tr>
+            <td data-edit>Put a second myth here</td>
+            <td data-edit>Two real myths here will convince people more than anything else on this page — this is the product sample.<span class="src" data-edit>Source: document name, institution, year</span></td>
+          </tr>
+        </table>
+      </div>
+      <div class="img-slot wide" data-img style="margin-top:22px">Click to add a preview of the inside pages</div>
+    </div>
   </div>
 </section>
 
-<!-- ============ WHO IT'S FOR ============ -->
+<!-- ============ COMO FUNCIONA ============ -->
+<section>
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow" data-edit>How it works</span>
+      <h2 data-edit>From click to first routine, the same day</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="dot">1</div><h3 data-edit>Pick your guide</h3><p class="muted" data-edit>A single topic, a bundle of two, or the complete manual.</p></div>
+      <div class="step"><div class="dot">2</div><h3 data-edit>Get it by email</h3><p class="muted" data-edit>The PDF arrives as soon as your payment clears. Open it on your phone, your computer, or print it.</p></div>
+      <div class="step"><div class="dot">3</div><h3 data-edit>Follow the routine</h3><p class="muted" data-edit>The checklist at the end tells you what to do today, with nothing to memorise.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARA QUEM ============ -->
 <section style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap grid2">
     <div>
       <h2 data-edit>This is for you if…</h2>
       <ul class="checks yes">
-        <li data-edit>You want to understand what you're feeling before you act</li>
+        <li data-edit>You want to understand what you’re feeling before you act</li>
         <li data-edit>You'd rather have something short than a course that runs for hours</li>
         <li data-edit>You want safe exercises you can do at home</li>
         <li data-edit>You're already in treatment and want to reinforce what you learned</li>
@@ -240,20 +368,22 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
     <div>
       <h2 data-edit>This isn't for you if…</h2>
       <ul class="checks no">
-        <li data-edit>You're looking for a diagnosis — that only comes from an in-person assessment</li>
+        <li data-edit>You're after a diagnosis — that only comes from an in-person assessment</li>
         <li data-edit>Your pain is severe, sudden, or followed a fall (please seek care)</li>
-        <li data-edit>You want to replace the care of your own clinician</li>
+        <li data-edit>You want to replace your own clinician's care</li>
       </ul>
+      <p class="small muted" style="margin-top:18px" data-edit>I'd rather say this now than have you find out after buying.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ OFFERS ============ -->
-<section id="offers">
+<!-- ============ OFERTAS ============ -->
+<section id="ofertas">
   <div class="wrap">
     <div class="center">
       <span class="eyebrow" data-edit>Pick yours</span>
       <h2 data-edit>Start with one guide, or take the whole set on your topic</h2>
+      <p class="muted narrow" data-edit>All three come with the same 7-day guarantee. If it turns out not to be for you, just ask for your money back.</p>
     </div>
     <div class="offers">
       <div class="offer">
@@ -261,13 +391,14 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
         <p class="muted small" data-edit>One topic, start to finish</p>
         <span class="from" data-edit>was $19.00</span>
         <div class="price" data-edit>$9.00</div>
+        <span class="save" data-edit>save 53%</span>
         <ul>
           <li data-edit>1 pocket guide as a PDF</li>
           <li data-edit>Illustrated exercises</li>
           <li data-edit>Myth table with sources</li>
           <li data-edit>Ready-made routine</li>
         </ul>
-        <a class="btn alt full" data-checkout="checkoutGuide" href="#" data-edit>Get the guide</a>
+        <a class="btn alt full" data-checkout="checkoutGuia" href="#" data-edit>I want this one</a>
       </div>
       <div class="offer featured">
         <span class="badge" data-edit>MOST POPULAR</span>
@@ -275,33 +406,48 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
         <p class="muted small" data-edit>Two topics that complete each other, in a single volume</p>
         <span class="from" data-edit>was $38.00</span>
         <div class="price" data-edit>$15.00</div>
+        <span class="save" data-edit>save 61%</span>
         <ul>
           <li data-edit>2 guides in one volume, with a table of contents</li>
           <li data-edit>A page linking one topic to the other</li>
           <li data-edit>One combined routine</li>
           <li data-edit>Everything in the single guide</li>
         </ul>
-        <a class="btn full" data-checkout="checkoutBundle" href="#" data-edit>Get the bundle</a>
+        <a class="btn full" data-checkout="checkoutCombo" href="#" data-edit>I want the bundle</a>
       </div>
       <div class="offer">
         <h3 data-edit>Complete manual</h3>
         <p class="muted small" data-edit>The whole group of topics</p>
         <span class="from" data-edit>was $76.00</span>
         <div class="price" data-edit>$24.00</div>
+        <span class="save" data-edit>save 68%</span>
         <ul>
           <li data-edit>4 guides in one manual</li>
           <li data-edit>An introduction to the topic</li>
           <li data-edit>One consolidated myth table</li>
           <li data-edit>Everything in the bundles</li>
         </ul>
-        <a class="btn alt full" data-checkout="checkoutManual" href="#" data-edit>Get the manual</a>
+        <a class="btn alt full" data-checkout="checkoutManual" href="#" data-edit>I want the manual</a>
       </div>
     </div>
-    <p class="center small muted" style="margin-top:20px" data-edit>Secure checkout • Access emailed right away</p>
+    <p class="center small muted" style="margin-top:24px" data-edit>Secure checkout · Access emailed right away</p>
   </div>
 </section>
 
-<!-- ============ AUTHOR ============ -->
+<!-- ============ GARANTIA ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="seal"><div><b>7</b>DAYS</div></div>
+      <div>
+        <h2 data-edit>The risk is mine, not yours</h2>
+        <p style="margin:0" data-edit>Read the whole guide. If you decide it was not for you, request a refund within 7 days through the payment platform and get 100% of your money back. No form, no questions, nothing to justify.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTOR ============ -->
 <section style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap author">
     <div class="img-slot round" data-img>Your photo</div>
@@ -309,55 +455,45 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
       <span class="eyebrow" data-edit>Who wrote this</span>
       <h2 data-edit>[Your name], physiotherapist</h2>
       <p class="muted" data-edit>Licence no. [your registration number]</p>
-      <p data-edit>Write 3 or 4 lines here: your training, how long you've been practising, the kind of patient you work with, and why you decided to create the guides. Write the way you'd talk to a patient in your office.</p>
+      <p data-edit>Write 3 or 4 lines here: your training, how long you've been practising, the kind of patient you work with, and why you decided to create the guides. Write the way you'd talk to a patient in your office — this is the part of the page that builds the most trust.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
+<!-- ============ DEPOIMENTOS ============ -->
 <section>
   <div class="wrap">
     <h2 class="center" data-edit>What readers say</h2>
-    <div class="grid3" style="margin-top:28px">
-      <div class="card"><p class="quote" data-edit>"Paste a real testimonial here, with the person's permission."</p><p class="quote-by" data-edit>— Name, city</p></div>
-      <div class="card"><p class="quote" data-edit>"Paste a real testimonial here, with the person's permission."</p><p class="quote-by" data-edit>— Name, city</p></div>
-      <div class="card"><p class="quote" data-edit>"Paste a real testimonial here, with the person's permission."</p><p class="quote-by" data-edit>— Name, city</p></div>
+    <div class="grid3" style="margin-top:30px">
+      <div class="card"><p class="quote" data-edit>"Paste a real testimonial here, with the person’s permission."</p><p class="quote-by" data-edit>— Name, city</p></div>
+      <div class="card"><p class="quote" data-edit>"Paste a real testimonial here, with the person’s permission."</p><p class="quote-by" data-edit>— Name, city</p></div>
+      <div class="card"><p class="quote" data-edit>"Paste a real testimonial here, with the person’s permission."</p><p class="quote-by" data-edit>— Name, city</p></div>
     </div>
     <p class="note" data-edit>⚠️ Delete this whole section until you have real testimonials. An invented testimonial is deceptive advertising and breaches professional conduct rules.</p>
   </div>
 </section>
 
-<!-- ============ GUARANTEE ============ -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="guarantee">
-      <div class="seal"><div><b>7</b>DAYS</div></div>
-      <div>
-        <h2 data-edit>Unconditional 7-day guarantee</h2>
-        <p style="margin:0" data-edit>Read it and decided it wasn't for you? Request a refund within 7 days through the payment platform and get 100% of your money back, no questions asked.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ FAQ ============ -->
 <section style="padding-top:0">
-  <div class="wrap" style="max-width:760px">
+  <div class="wrap narrow">
     <h2 class="center" data-edit>Frequently asked questions</h2>
+    <details><summary data-edit>Isn't this the same as searching online?</summary><p data-edit>The information is out there, scattered. What is not out there is the same information in the right order, with its source alongside, and without one page contradicting the next. That is why the guide is short: the work of separating what holds up from what does not has already been done.</p></details>
+    <details><summary data-edit>I don't have time to read.</summary><p data-edit>That is exactly why the guide is in pocket format. If you only have ten minutes, read the "What to do" block and the routine at the end — that is enough to start today.</p></details>
     <details><summary data-edit>How do I receive the guide?</summary><p data-edit>As soon as your payment clears, you get an email with access to the PDF. By card it arrives immediately; slower payment methods can take up to 2 business days.</p></details>
-    <details><summary data-edit>Can I read it on my phone?</summary><p data-edit>Yes. The guide is in pocket format precisely so it sits comfortably on a phone screen, and it prints well too.</p></details>
-    <details><summary data-edit>Does the guide replace seeing a physiotherapist?</summary><p data-edit>No. It's educational material. If your pain is severe, persistent, or comes with other symptoms, get an in-person assessment.</p></details>
-    <details><summary data-edit>Where does the information come from?</summary><p data-edit>Every myth and every figure in the guide names its source — a guideline, a study or an institution — so you can check it yourself if you want.</p></details>
-    <details><summary data-edit>What if I don't like it?</summary><p data-edit>You have 7 days to request a full refund through the payment platform.</p></details>
+    <details><summary data-edit>Can I read it on my phone?</summary><p data-edit>Yes. The pocket format exists precisely so it sits comfortably on a phone screen, and the file prints well too.</p></details>
+    <details><summary data-edit>Does the guide replace seeing a physiotherapist?</summary><p data-edit>No, and it doesn't try to. It's educational material. If your pain is severe, persistent, or comes with other symptoms, get an in-person assessment — the guide says so itself.</p></details>
+    <details><summary data-edit>Where does the information come from?</summary><p data-edit>Every myth and every figure in the guide names the document — a guideline, a study or an institution, with the year. If the source does not confirm it, it does not go in the guide.</p></details>
+    <details><summary data-edit>What if I don't like it?</summary><p data-edit>You have 7 days to request a full refund through the payment platform. Nothing to explain.</p></details>
   </div>
 </section>
 
-<!-- ============ FINAL CTA ============ -->
+<!-- ============ CTA FINAL ============ -->
 <section class="center" style="background:var(--brand-soft)">
-  <div class="wrap" style="max-width:720px">
-    <h2 data-edit>Ready to know what to do?</h2>
-    <p class="muted" data-edit>Pick your guide and start today, at your own pace.</p>
-    <a class="btn cta" href="#offers" data-edit>See the options →</a>
+  <div class="wrap narrow">
+    <h2 data-edit>Will you remember what to do tomorrow?</h2>
+    <p class="lead" data-edit>That's what the guide is for. Pick yours and start today, at your own pace.</p>
+    <a class="btn cta" href="#ofertas" data-edit>See the options →</a>
+    <p class="trustline" data-edit><b>7-day</b> guarantee · <b>Instant access</b> by email</p>
   </div>
 </section>
 
@@ -370,11 +506,16 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
 
 <a class="wa" id="wa" href="#" target="_blank" rel="noopener">💬 Questions? WhatsApp</a>
 
+<div class="stickybar">
+  <div class="txt"><b data-edit>From $9.00</b><span data-edit>7-day guarantee</span></div>
+  <a class="btn" href="#ofertas" data-edit>See options</a>
+</div>
+
 <script>
 (function(){
-  // --- pass the ad's UTMs through to the checkout links ---
+  // --- pass the ad’s UTMs through to the checkout links ---
   const qs = new URLSearchParams(location.search);
-  qs.delete('edit'); qs.delete('editar');
+  qs.delete('editar'); qs.delete('edit');
   const extra = qs.toString();
   document.querySelectorAll('[data-checkout]').forEach(a=>{
     const base = CONFIG[a.dataset.checkout];
@@ -383,11 +524,11 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
     a.addEventListener('click',()=>{ if(window.fbq) fbq('track','InitiateCheckout'); });
   });
 
-  // --- language link ---
-  if(CONFIG.otherLanguageUrl){
+  // --- other-language link ---
+  if(CONFIG.outraLinguaUrl){
     const ll = document.getElementById('langlink');
-    ll.href = CONFIG.otherLanguageUrl;
-    ll.textContent = CONFIG.otherLanguageLabel || 'Português';
+    ll.href = CONFIG.outraLinguaUrl;
+    ll.textContent = CONFIG.outraLinguaLabel || 'Português';
     ll.style.display = 'inline';
   }
 
@@ -410,7 +551,7 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
 
   // --- edit mode ---
   const p = new URLSearchParams(location.search);
-  if(!p.has('edit') && !p.has('editar')) return;
+  if(!p.has('editar') && !p.has('edit')) return;
   const bar = document.getElementById('editbar');
   bar.style.display = 'flex';
   const btnEdit = document.getElementById('btnEdit');
@@ -424,12 +565,10 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
       if(on) el.setAttribute('contenteditable','true'); else el.removeAttribute('contenteditable');
     });
   };
-  // links don't navigate while editing
   document.addEventListener('click',e=>{
     if(on && e.target.closest('a')) e.preventDefault();
   },true);
 
-  // swap images
   document.querySelectorAll('[data-img]').forEach(slot=>{
     slot.addEventListener('click',()=>{
       const inp = document.createElement('input');
@@ -444,13 +583,11 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
     });
   });
 
-  // light/dark theme, to check both
   document.getElementById('btnTheme').onclick = ()=>{
     const r = document.documentElement;
     r.dataset.theme = r.dataset.theme === 'dark' ? 'light' : 'dark';
   };
 
-  // download the edited page, cleaned up
   document.getElementById('btnSave').onclick = ()=>{
     const clone = document.documentElement.cloneNode(true);
     clone.removeAttribute('data-theme');
