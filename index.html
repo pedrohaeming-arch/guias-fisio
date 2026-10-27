@@ -22,16 +22,16 @@
 -->
 <script>
 const CONFIG = {
-  // Link do checkout de cada oferta (Hotmart, Kiwify, Eduzz, etc.)
+  // Link do checkout do guia de entrada (Hotmart). O order bump e o Manual
+  // (upsell de 1 clique) são configurados na própria Hotmart, não nesta página.
   checkoutGuia:   "https://SEU-CHECKOUT.com/guia",
-  checkoutCombo:  "https://SEU-CHECKOUT.com/combo",
-  checkoutManual: "https://SEU-CHECKOUT.com/manual",
   // ID do Pixel da Meta (deixe "" para não carregar)
   metaPixelId: "",
   // WhatsApp de suporte, só números com DDI e DDD (deixe "" para esconder)
   whatsapp: "",
   // Link para a outra língua (deixe "" para esconder)
-  outraLinguaUrl: "en/",
+  // Versão em inglês congelada até 24/01/2027 (foco no Brasil)
+  outraLinguaUrl: "",
   outraLinguaLabel: "English"
 };
 </script>
@@ -145,6 +145,7 @@ p{margin:0 0 1em}
 
 /* ofertas */
 .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;margin-top:38px}
+.offers.single{grid-template-columns:minmax(0,420px);justify-content:center}
 .offer{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px 24px;display:flex;flex-direction:column;position:relative}
 .offer.featured{border:2px solid var(--accent);box-shadow:var(--shadow-lg);transform:scale(1.02)}
 .badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.73rem;font-weight:800;padding:6px 14px;border-radius:999px;white-space:nowrap;letter-spacing:.04em}
@@ -221,7 +222,6 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
   <span>Clique nas imagens para trocar. Links e preços: bloco CONFIG no código.</span>
 </div>
 
-<div class="topbar"><span data-edit>🎉 Preço de lançamento — a primeira turma paga menos</span><a class="langlink" id="langlink" href="#"></a></div>
 
 <!-- ============ HERO ============ -->
 <header class="hero">
@@ -347,7 +347,7 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
       <h2 data-edit>Do clique à primeira rotina, no mesmo dia</h2>
     </div>
     <div class="steps">
-      <div class="step"><div class="dot">1</div><h3 data-edit>Escolha seu guia</h3><p class="muted" data-edit>Um tema só, um combo de dois ou o manual completo.</p></div>
+      <div class="step"><div class="dot">1</div><h3 data-edit>Garanta o guia</h3><p class="muted" data-edit>Um guia de bolso sobre a coluna, do começo ao fim.</p></div>
       <div class="step"><div class="dot">2</div><h3 data-edit>Receba no e-mail</h3><p class="muted" data-edit>O PDF chega assim que o pagamento é aprovado. Abre no celular, no computador ou impresso.</p></div>
       <div class="step"><div class="dot">3</div><h3 data-edit>Siga a rotina</h3><p class="muted" data-edit>O checklist do fim do guia diz o que fazer já hoje, sem depender de você decorar nada.</p></div>
     </div>
@@ -382,53 +382,22 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
 <section id="ofertas">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow" data-edit>Escolha o seu</span>
-      <h2 data-edit>Comece por um guia ou leve a coleção do tema</h2>
-      <p class="muted narrow" data-edit>Os três vêm com a mesma garantia de 7 dias. Se não for para você, é só pedir o dinheiro de volta.</p>
+      <span class="eyebrow" data-edit>O guia</span>
+      <h2 data-edit>Comece pelo guia da coluna</h2>
+      <p class="muted narrow" data-edit>Garantia de 7 dias: se não for para você, é só pedir o dinheiro de volta.</p>
     </div>
-    <div class="offers">
-      <div class="offer">
-        <h3 data-edit>Guia individual</h3>
-        <p class="muted small" data-edit>Um tema, do começo ao fim</p>
-        <span class="from" data-edit>de R$ 37,00</span>
-        <div class="price" data-edit>R$ 19,90</div>
-        <span class="save" data-edit>economize 46%</span>
-        <ul>
-          <li data-edit>1 guia de bolso em PDF</li>
-          <li data-edit>Exercícios ilustrados</li>
-          <li data-edit>Tabela de mitos com fontes</li>
-          <li data-edit>Rotina pronta</li>
-        </ul>
-        <a class="btn alt full" data-checkout="checkoutGuia" href="#" data-edit>Quero este</a>
-      </div>
+    <div class="offers single">
       <div class="offer featured">
-        <span class="badge" data-edit>MAIS ESCOLHIDO</span>
-        <h3 data-edit>Combo (2 guias)</h3>
-        <p class="muted small" data-edit>Dois temas que se completam, num volume só</p>
-        <span class="from" data-edit>de R$ 74,00</span>
-        <div class="price" data-edit>R$ 29,90</div>
-        <span class="save" data-edit>economize 60%</span>
+        <h3 data-edit>Guia de bolso: [nome do guia de coluna]</h3>
+        <p class="muted small" data-edit>[O problema que o guia resolve, em uma linha]</p>
+        <div class="price" data-edit>R$ 37</div>
         <ul>
-          <li data-edit>2 guias em um volume, com sumário</li>
-          <li data-edit>Página que liga um tema ao outro</li>
-          <li data-edit>Rotina unificada</li>
-          <li data-edit>Tudo do guia individual</li>
+          <li data-edit>Guia de bolso em PDF</li>
+          <li data-edit>Exercícios ilustrados, com execução, tempo e repetições</li>
+          <li data-edit>Tabela de mitos com a fonte de cada um</li>
+          <li data-edit>Rotina pronta para colar na geladeira</li>
         </ul>
-        <a class="btn full" data-checkout="checkoutCombo" href="#" data-edit>Quero o combo</a>
-      </div>
-      <div class="offer">
-        <h3 data-edit>Manual completo</h3>
-        <p class="muted small" data-edit>O grupo inteiro de temas</p>
-        <span class="from" data-edit>de R$ 148,00</span>
-        <div class="price" data-edit>R$ 47,00</div>
-        <span class="save" data-edit>economize 68%</span>
-        <ul>
-          <li data-edit>4 guias em um manual</li>
-          <li data-edit>Introdução ao tema</li>
-          <li data-edit>Uma tabela de mitos consolidada</li>
-          <li data-edit>Tudo dos combos</li>
-        </ul>
-        <a class="btn alt full" data-checkout="checkoutManual" href="#" data-edit>Quero o manual</a>
+        <a class="btn full" data-checkout="checkoutGuia" href="#" data-edit>Quero o guia</a>
       </div>
     </div>
     <p class="center small muted" style="margin-top:24px" data-edit>Pagamento seguro · Acesso enviado por e-mail na hora</p>
@@ -461,19 +430,6 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
   </div>
 </section>
 
-<!-- ============ DEPOIMENTOS ============ -->
-<section>
-  <div class="wrap">
-    <h2 class="center" data-edit>O que dizem de quem já leu</h2>
-    <div class="grid3" style="margin-top:30px">
-      <div class="card"><p class="quote" data-edit>"Cole aqui um depoimento real, com autorização da pessoa."</p><p class="quote-by" data-edit>— Nome, cidade</p></div>
-      <div class="card"><p class="quote" data-edit>"Cole aqui um depoimento real, com autorização da pessoa."</p><p class="quote-by" data-edit>— Nome, cidade</p></div>
-      <div class="card"><p class="quote" data-edit>"Cole aqui um depoimento real, com autorização da pessoa."</p><p class="quote-by" data-edit>— Nome, cidade</p></div>
-    </div>
-    <p class="note" data-edit>⚠️ Apague esta seção inteira até ter depoimentos reais. Depoimento inventado é propaganda enganosa e fere o código de ética da fisioterapia.</p>
-  </div>
-</section>
-
 <!-- ============ FAQ ============ -->
 <section style="padding-top:0">
   <div class="wrap narrow">
@@ -492,8 +448,8 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
 <section class="center" style="background:var(--brand-soft)">
   <div class="wrap narrow">
     <h2 data-edit>Amanhã você vai lembrar o que fazer?</h2>
-    <p class="lead" data-edit>É para isso que o guia existe. Escolha o seu e comece hoje, no seu ritmo.</p>
-    <a class="btn cta" href="#ofertas" data-edit>Ver as opções →</a>
+    <p class="lead" data-edit>É para isso que o guia existe. Comece hoje, no seu ritmo.</p>
+    <a class="btn cta" href="#ofertas" data-edit>Ver o guia →</a>
     <p class="trustline" data-edit><b>7 dias</b> de garantia · <b>Acesso imediato</b> por e-mail</p>
   </div>
 </section>
@@ -508,8 +464,8 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
 <a class="wa" id="wa" href="#" target="_blank" rel="noopener">💬 Dúvidas? WhatsApp</a>
 
 <div class="stickybar">
-  <div class="txt"><b data-edit>A partir de R$ 19,90</b><span data-edit>7 dias de garantia</span></div>
-  <a class="btn" href="#ofertas" data-edit>Ver opções</a>
+  <div class="txt"><b data-edit>Guia de bolso · R$ 37</b><span data-edit>7 dias de garantia</span></div>
+  <a class="btn" href="#ofertas" data-edit>Ver o guia</a>
 </div>
 
 <script>
