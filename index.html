@@ -155,14 +155,14 @@ details.faq p{margin:10px 0 0;color:var(--muted)}
         <div class="tag">Teleconsulta</div>
         <h3 data-edit>Um plano feito para você</h3>
         <ul class="muted">
-          <li data-edit>Avaliação por vídeo com fisioterapeuta</li>
-          <li data-edit>Plano de 30 dias individual</li>
-          <li data-edit>Registro em prontuário, com o seu consentimento</li>
+          <li data-edit>Avaliação por vídeo, para quem não consegue ir a um atendimento presencial</li>
+          <li data-edit>Plano de 30 dias individual, com um retorno para ajustar</li>
+          <li data-edit>Com o seu consentimento e registro em prontuário</li>
         </ul>
         <div id="teleAcao"><span class="chip soon">Em breve</span></div>
       </div>
     </div>
-    <p class="center small muted" style="margin-top:22px" data-edit>A teleconsulta segue a Resolução COFFITO nº 619/2025, que regula o atendimento de fisioterapia a distância.</p>
+    <p class="center small muted" style="margin-top:22px" data-edit>A teleconsulta segue a Resolução COFFITO nº 619/2025: é uma opção para quem não pode ser atendido presencialmente e não substitui a avaliação presencial quando ela for necessária.</p>
   </div>
 </section>
 
@@ -183,7 +183,7 @@ details.faq p{margin:10px 0 0;color:var(--muted)}
     <h2 class="center" data-edit>Perguntas frequentes</h2>
     <details class="faq"><summary data-edit>Os guias substituem a consulta com um fisioterapeuta?</summary><p data-edit>Não. São material educativo. Se a dor for forte, persistente ou vier com outros sintomas, procure avaliação. Os guias trazem os sinais de alerta.</p></details>
     <details class="faq"><summary data-edit>De onde vêm as informações?</summary><p data-edit>De diretrizes, estudos e instituições, com o nome e o ano ao lado de cada afirmação. Se a fonte não confirma, o dado não entra.</p></details>
-    <details class="faq"><summary data-edit>Qual é a diferença entre o plano de 30 dias e a teleconsulta?</summary><p data-edit>O plano de 30 dias é o mesmo para todos com aquele perfil. Na teleconsulta, o fisioterapeuta avalia você por vídeo e monta um plano individual.</p></details>
+    <details class="faq"><summary data-edit>Qual é a diferença entre o plano de 30 dias e a teleconsulta?</summary><p data-edit>O plano de 30 dias é o mesmo para todos com aquele perfil. Na teleconsulta, o fisioterapeuta avalia você por vídeo e monta um plano individual. Ela é para quem não consegue ir a um atendimento presencial; se a avaliação mostrar que o presencial é necessário, você é orientado a procurá-lo.</p></details>
     <details class="faq"><summary data-edit>Como recebo os guias?</summary><p data-edit>Assim que o pagamento é aprovado, chega um e-mail com o acesso ao PDF. No Pix e no cartão é na hora; no boleto, em até 2 dias úteis.</p></details>
     <details class="faq"><summary data-edit>E se eu não gostar?</summary><p data-edit>Você tem 7 dias para pedir o reembolso integral pela plataforma de pagamento, sem precisar explicar.</p></details>
   </div>
@@ -242,11 +242,12 @@ details.faq p{margin:10px 0 0;color:var(--muted)}
   var plano = (FV.produtos || []).filter(function(p){ return p.tipo === "plano30" && p.status === "no-ar" && p.link; })[0];
   if (plano){ document.getElementById("plano30Status").innerHTML = '<a class="btn alt full" href="' + esc(plano.link) + '">Ver o ' + esc(plano.nome) + ' · ' + esc(plano.preco) + '</a>'; }
 
-  // teleconsulta
+  // teleconsulta: o valor não aparece no site (Código de Ética da Fisioterapia, art. 40, I); é informado no agendamento
   var t = FV.teleconsulta || {};
   if (t.ativa){
-    document.getElementById("teleAcao").innerHTML = '<p style="font-weight:900;font-size:1.2rem;margin:0 0 10px">' + esc(t.preco) + '</p>' +
-      (t.link ? '<a class="btn full" href="' + esc(t.link) + '" target="_blank" rel="noopener">Agendar teleconsulta</a>' : '<p class="small muted">Link de agendamento em breve.</p>');
+    document.getElementById("teleAcao").innerHTML = t.link
+      ? '<a class="btn full" href="' + esc(t.link) + '" target="_blank" rel="noopener">Agendar teleconsulta</a><p class="small muted" style="margin:8px 0 0">O valor é informado no agendamento.</p>'
+      : '<p class="small muted">Agenda em breve.</p>';
   }
 
   // ---- modo de edição (?editar) ----

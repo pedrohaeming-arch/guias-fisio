@@ -5,12 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Qual guia combina com você? — FisioVault</title>
-<meta name="description" content="Seis perguntas rápidas para descobrir qual guia de fisioterapia combina com você. Educativo, sem diagnóstico.">
+<meta name="description" content="Até seis perguntas rápidas para descobrir qual guia de fisioterapia combina com você. Educativo, sem diagnóstico.">
 <!--
-  QUIZ — avaliação rápida e educativa (não é diagnóstico)
+  QUIZ — rápido e educativo (não é avaliação clínica nem diagnóstico)
   - Liga e desliga em produtos.js (quizAtivo). Para testar desligado: quiz.html#teste
   - As respostas ficam só no navegador: nada é gravado nem enviado.
     Por isso esta página NÃO carrega o Pixel da Meta (sintoma é dado de saúde).
+  - Avaliação individual: o presencial vem primeiro; a teleconsulta aparece como opção para
+    quem não consegue ir (Res. COFFITO nº 619/2025) e sem o valor (Código de Ética, art. 40, I).
 -->
 <link rel="stylesheet" href="estilo.css">
 <script src="produtos.js"></script>
@@ -159,15 +161,17 @@ body{min-height:100vh}
           : '<p style="margin:10px 0 0"><span class="chip soon">Em breve</span></p>' + (FV.instagram ? '<a class="btn ghost full" href="' + esc(FV.instagram) + '" target="_blank" rel="noopener">Acompanhar o lançamento</a>' : '')) +
       '</div>';
   }
+  // Avaliação individual: presencial primeiro. A teleconsulta é a opção para quem não consegue ir
+  // a um atendimento presencial (Res. COFFITO nº 619/2025, art. 1º, I e III). O valor não aparece
+  // no quiz (Código de Ética da Fisioterapia, art. 40, I): é informado no agendamento.
   function cardTele(principal){
     var t = FV.teleconsulta || {};
-    if (t.ativa){
-      return '<div class="rec"><div class="label' + (principal ? ' main' : '') + '">' + (principal ? 'Recomendação principal' : 'Se preferir acompanhamento') + '</div>' +
-        '<h3>Teleconsulta: um plano feito para você</h3><p class="muted" style="margin:0">' + esc(t.descricao || "") + '</p>' +
-        '<div class="price" style="margin-top:8px">' + esc(t.preco || "") + '</div>' +
-        (t.link ? '<a class="btn full" href="' + esc(t.link) + '" target="_blank" rel="noopener">Agendar teleconsulta</a>' : '') + '</div>';
-    }
-    return principal ? '<div class="rec"><div class="label main">Recomendação principal</div><h3>Avaliação com um fisioterapeuta</h3><p class="muted" style="margin:0">Pelo que você contou, o melhor começo é uma avaliação individual. Procure um fisioterapeuta perto de você.</p></div>' : '';
+    var tele = !t.ativa ? '' : '<div class="rec"><div class="label">' + (principal ? 'Se não puder ir a um atendimento presencial' : 'Se quiser um plano individual') + '</div>' +
+      '<h3>Teleconsulta: um plano feito para você</h3><p class="muted" style="margin:0">' + esc(t.descricao || "") + '</p>' +
+      (t.link ? '<a class="btn ' + (principal ? '' : 'alt ') + 'full" href="' + esc(t.link) + '" target="_blank" rel="noopener">Agendar teleconsulta</a><p class="fine" style="margin:6px 0 0">O valor é informado no agendamento.</p>'
+              : '<p style="margin:10px 0 0"><span class="chip soon">Agenda em breve</span></p>') + '</div>';
+    if (!principal) return tele;
+    return '<div class="rec"><div class="label main">Recomendação principal</div><h3>Avaliação com um fisioterapeuta</h3><p class="muted" style="margin:0">Pelo que você contou, o melhor começo é uma avaliação individual. Se puder, procure um fisioterapeuta perto de você.</p></div>' + tele;
   }
 
   function telaResultado(){
@@ -224,8 +228,8 @@ body{min-height:100vh}
 
   function render(step){
     if (step === "intro"){
-      $s.innerHTML = '<div class="kicker">Avaliação rápida</div><h1>Qual guia combina com você?</h1>' +
-        '<p class="muted">Até seis perguntas, cerca de 1 minuto. O resultado indica o guia, o plano de 30 dias ou o acompanhamento que faz mais sentido para o seu caso.</p>' +
+      $s.innerHTML = '<div class="kicker">Quiz rápido</div><h1>Qual guia combina com você?</h1>' +
+        '<p class="muted">Até seis perguntas, cerca de 1 minuto. O resultado indica o guia, o plano de 30 dias ou o tipo de acompanhamento que combina com as suas respostas.</p>' +
         '<div class="note">É educativo: não faz diagnóstico. Suas respostas ficam só neste navegador e não são gravadas nem enviadas.</div>' +
         '<div class="row"><span></span><button type="button" class="btn" data-act="comecar">Começar</button></div>';
     } else if (step === "alerta"){ $s.innerHTML = telaAlerta();

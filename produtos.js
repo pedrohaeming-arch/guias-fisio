@@ -6,6 +6,8 @@
    - Quiz: ligue quizAtivo quando o 2º tema tiver produto no ar.
    - Teleconsulta: ligue teleconsulta.ativa quando a agenda estiver
      pronta (consentimento, prontuário e plataforma, Res. COFFITO 619/2025).
+     O valor da consulta não vai no site (Código de Ética, art. 40, I):
+     informe na conversa de agendamento.
    ===================================================================== */
 window.FV = {
   marca: "FisioVault",                 // o mesmo nome do perfil de marca
@@ -18,9 +20,8 @@ window.FV = {
 
   teleconsulta: {
     ativa: false,                      // true quando a agenda estiver aberta
-    preco: "R$ [valor]",
     link: "",                          // link da agenda ou do WhatsApp de agendamento
-    descricao: "Avaliação por vídeo com fisioterapeuta e um plano de 30 dias feito para você, com um retorno para ajustar."
+    descricao: "Avaliação por vídeo com fisioterapeuta e um plano de 30 dias feito para você, com um retorno para ajustar. Para quem não consegue ir a um atendimento presencial."
   },
 
   // Regiões que o quiz conhece. Uma região sem produto mostra "ainda não temos guia".
