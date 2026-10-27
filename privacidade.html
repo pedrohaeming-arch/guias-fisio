@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Privacidade — FisioVault</title>
+<link rel="stylesheet" href="estilo.css">
+<script src="produtos.js"></script>
+<style>
+.doc{padding-block:48px 64px}
+.doc h1{font-size:clamp(1.7rem,4vw,2.3rem)}
+.doc h2{font-size:1.25rem;margin-top:1.8em}
+.doc li{margin:6px 0}
+</style>
+</head>
+<body>
+<main class="doc">
+  <div class="wrap narrow">
+    <p><a href="index.html">← Voltar</a></p>
+    <h1>Aviso de privacidade</h1>
+    <p class="muted">Última atualização: [data]</p>
+
+    <h2>Quem é responsável</h2>
+    <p><span data-fv="autor">[Seu nome]</span>, fisioterapeuta, <span data-fv="crefito">CREFITO-[região] [número]</span>. Contato: <span data-fv="email">contato@seudominio.com</span>.</p>
+
+    <h2>Quais dados este site usa</h2>
+    <ul>
+      <li><b>Navegação:</b> as páginas de vendas usam o Pixel da Meta, que grava cookies para medir visitas e compras vindas de anúncios. A contagem de visitas do Cloudflare mede o tráfego do site.</li>
+      <li><b>Compras:</b> nome, e-mail, CPF e dados de pagamento são coletados e tratados pela Hotmart, que processa a venda e entrega o produto, conforme a política de privacidade dela.</li>
+      <li><b>Quiz:</b> as respostas do quiz ficam só no seu navegador. Elas não são gravadas, não são enviadas a ninguém e somem quando você fecha a página. A página do quiz não usa o Pixel da Meta.</li>
+    </ul>
+
+    <h2>Para que esses dados servem</h2>
+    <p>Medir quantas pessoas visitam as páginas e compram, entregar o produto comprado e melhorar o conteúdo. Nenhum dado é vendido.</p>
+
+    <h2>Como recusar os cookies</h2>
+    <p>Você pode bloquear ou apagar cookies nas configurações do seu navegador. O site continua funcionando.</p>
+
+    <h2>Seus direitos</h2>
+    <p>Pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode pedir acesso, correção ou exclusão dos seus dados escrevendo para <span data-fv="email">contato@seudominio.com</span>.</p>
+  </div>
+</main>
+<footer><div class="wrap"><p><b data-fv="marca">FisioVault</b> · material educativo, que não substitui avaliação profissional.</p></div></footer>
+<script>
+(function(){
+  var FV = window.FV || {};
+  ["marca","autor","crefito","email"].forEach(function(k){ if (FV[k]) document.querySelectorAll('[data-fv="' + k + '"]').forEach(function(el){ el.textContent = FV[k]; }); });
+  if (FV.marca) document.title = "Privacidade — " + FV.marca;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Qual guia combina com você? — FisioVault</title>
+<meta name="description" content="Seis perguntas rápidas para descobrir qual guia de fisioterapia combina com você. Educativo, sem diagnóstico.">
+<!--
+  QUIZ — avaliação rápida e educativa (não é diagnóstico)
+  - Liga e desliga em produtos.js (quizAtivo). Para testar desligado: quiz.html#teste
+  - As respostas ficam só no navegador: nada é gravado nem enviado.
+    Por isso esta página NÃO carrega o Pixel da Meta (sintoma é dado de saúde).
+-->
+<link rel="stylesheet" href="estilo.css">
+<script src="produtos.js"></script>
+<style>
+/* Layout: uma pergunta por tela, cartão central, barra de progresso fina no topo do cartão */
+body{min-height:100vh}
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:12px}
+.brand{font-weight:900;color:var(--ink);text-decoration:none}
+.stage{padding-block:40px 64px}
+.qcard{max-width:640px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.pbar{height:6px;background:var(--raise)}
+.pbar i{display:block;height:100%;background:var(--brand);width:0;transition:width .25s}
+.qbody{padding:28px}
+.qbody h1,.qbody h2{font-size:clamp(1.4rem,3.4vw,1.8rem);outline:none}
+.kicker{font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font:inherit;color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--brand)}
+.opt[aria-pressed="true"],.opt.checked{border-color:var(--brand);background:var(--brand-soft)}
+.opt .box{flex:0 0 22px;height:22px;border-radius:6px;border:2px solid var(--line);margin-top:2px;display:grid;place-items:center;font-size:.8rem;font-weight:900;color:var(--brand-ink)}
+.opt.checked .box{background:var(--brand);border-color:var(--brand)}
+.group-title{font-weight:800;margin:20px 0 4px}
+.group-title.danger{color:var(--danger)}
+.row{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
+.linkbtn{background:none;border:0;color:var(--muted);font:inherit;font-weight:700;cursor:pointer;padding:10px 0}
+.res-alert{border-radius:14px;padding:18px;margin-top:14px}
+.res-alert.danger{background:var(--danger-soft);border:1px solid var(--danger)}
+.res-alert.warn{background:var(--warn);border:1px solid var(--warn-line)}
+.rec{border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:12px;background:var(--bg)}
+.rec h3{margin:6px 0 4px}
+.rec .price{font-weight:900}
+.rec .btn{margin-top:10px}
+.label{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.label.main{color:var(--brand)}
+.fine{font-size:.82rem;color:var(--muted);margin-top:18px}
+.fine a{color:var(--muted)}
+@media (prefers-reduced-motion: reduce){.pbar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="preview-banner" id="previewBanner" hidden>Prévia: o quiz aparece ligado só para você testar.</div>
+<header class="top"><div class="wrap"><a class="brand" href="index.html" id="brand">FisioVault</a><a class="small" href="index.html#guias">Ver os guias</a></div></header>
+<main class="stage">
+  <div class="wrap">
+    <div class="qcard">
+      <div class="pbar" aria-hidden="true"><i id="pbar"></i></div>
+      <div class="qbody" id="screen" aria-live="polite"></div>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap"><p>Quiz educativo: não faz diagnóstico nem substitui avaliação. Suas respostas ficam só neste navegador e não são gravadas nem enviadas. <a href="privacidade.html">Privacidade</a></p></div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var FV = window.FV || {};
+  var $s = document.getElementById("screen"), $p = document.getElementById("pbar");
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  if (FV.marca){ document.getElementById("brand").textContent = FV.marca; document.title = "Qual guia combina com você? — " + FV.marca; }
+  if (FV.previa) document.getElementById("previewBanner").hidden = false;
+
+  var FONTES = {
+    nhs: '<a href="https://wellbeing.wmas.nhs.uk/wp-content/uploads/2026/02/MSKL007-Back-pain-information-leaflet-Information-Sheet.pdf" target="_blank" rel="noopener">NHS, folheto sobre dor nas costas</a>',
+    ifompt: '<a href="https://doi.org/10.2519/jospt.2020.9971" target="_blank" rel="noopener">IFOMPT, Finucane et al., 2020</a>',
+    coracao: '<a href="https://www.england.nhs.uk/south-east/2020/05/19/nhs-urges-the-public-to-know-the-symptoms-of-heart-attacks-and-to-get-urgent-help-if-they-experience-them/" target="_blank" rel="noopener">NHS, sintomas de infarto</a>',
+    oms: '<a href="https://www.who.int/news/item/07-12-2023-who-releases-guidelines-on-chronic-low-back-pain" target="_blank" rel="noopener">OMS, diretriz sobre dor lombar crônica (2023)</a>'
+  };
+
+  var ALERTAS = {
+    emergencia: [
+      ["urina", "Perda de controle da urina ou das fezes, ou dificuldade nova para urinar"],
+      ["sela", "Dormência na região genital ou entre as nádegas"],
+      ["fraqueza", "Fraqueza forte nas pernas ou desequilíbrio para andar"],
+      ["peito", "Dor ou aperto no peito, falta de ar, ou dor que se espalha para o braço, o pescoço ou a mandíbula"]
+    ],
+    urgente: [
+      ["queda", "A dor começou depois de uma queda ou de um acidente"],
+      ["febre", "Febre junto com a dor"],
+      ["peso", "Perda de peso sem explicação"],
+      ["cancer", "Histórico de câncer"]
+    ]
+  };
+
+  var PERGUNTAS = {
+    regiao: { t: "Onde dói mais?", o: [["lombar","Parte baixa das costas"],["cervical","Pescoço ou parte alta das costas"],["ombro","Ombro"],["joelho","Joelho"],["quadril","Quadril"],["outro","Outro lugar, ou em vários lugares"]] },
+    tempo: { t: "Há quanto tempo essa dor aparece?", o: [["agudo","Menos de 6 semanas"],["sub","Entre 6 semanas e 3 meses"],["cronico","Mais de 3 meses"]] },
+    irradia: { t: null, o: null },
+    impacto: { t: "Quanto a dor atrapalha o seu dia?", o: [["pouco","Pouco: faço tudo, com algum incômodo"],["medio","Mais ou menos: deixo de fazer algumas coisas"],["muito","Muito: atrapalha o trabalho ou o sono"]] },
+    objetivo: { t: "O que você procura agora?", o: [["entender","Entender o que está acontecendo e o que evitar"],["rotina","Uma rotina de exercícios para seguir por 30 dias"],["individual","Um plano feito para mim, com acompanhamento de fisioterapeuta"]] }
+  };
+
+  var st, hist;
+  function reset(){ st = { alertas: [], regiao: null, tempo: null, irradia: null, impacto: null, objetivo: null }; hist = []; }
+  reset();
+
+  function ordem(){
+    var seq = ["intro","alerta","regiao"];
+    if (st.regiao && st.regiao !== "outro"){
+      seq.push("tempo");
+      if (st.regiao === "lombar" || st.regiao === "cervical") seq.push("irradia");
+      seq.push("impacto","objetivo");
+    }
+    seq.push("resultado");
+    return seq;
+  }
+  function progresso(step){ var s = ordem(); var i = s.indexOf(step); $p.style.width = Math.max(0, Math.round(i / (s.length - 1) * 100)) + "%"; }
+  function focar(){ var h = $s.querySelector("h1,h2"); if (h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:false}); } }
+  function ir(step, voltando){ if (!voltando && hist[hist.length - 1] !== step) hist.push(step); render(step); progresso(step); focar(); }
+  function voltar(){ hist.pop(); var prev = hist[hist.length - 1] || "intro"; render(prev); progresso(prev); focar(); }
+  function proximo(atual){ var s = ordem(); return s[s.indexOf(atual) + 1]; }
+
+  function telaPergunta(key){
+    var q = PERGUNTAS[key];
+    var titulo = q.t, opts = q.o;
+    if (key === "irradia"){
+      var m = (FV.temas && FV.temas[st.regiao] && FV.temas[st.regiao].membro) || (st.regiao === "cervical" ? "braço" : "perna");
+      titulo = "A dor desce para o " + m + "?";
+      opts = m === "braço"
+        ? [["nao","Não"],["acima","Sim, mas não passa do cotovelo"],["abaixo","Sim, passa do cotovelo ou chega à mão, com formigamento"]]
+        : [["nao","Não"],["acima","Sim, mas não passa do joelho"],["abaixo","Sim, passa do joelho ou chega ao pé, com formigamento"]];
+    }
+    var n = ordem().indexOf(key) - 1, tot = (st.regiao && st.regiao !== "outro") ? ordem().length - 3 : 5;
+    return '<div class="kicker">Pergunta ' + n + ' de ' + tot + '</div><h2>' + esc(titulo) + '</h2>' +
+      '<div class="opts">' + opts.map(function(o){ return '<button type="button" class="opt" data-k="' + key + '" data-v="' + o[0] + '" aria-pressed="' + (st[key] === o[0]) + '"><span>' + esc(o[1]) + '</span></button>'; }).join("") + '</div>' +
+      '<div class="row"><button type="button" class="linkbtn" data-act="voltar">← Voltar</button></div>';
+  }
+
+  function telaAlerta(){
+    function item(g, a){ var on = st.alertas.indexOf(a[0]) >= 0; return '<button type="button" class="opt' + (on ? ' checked' : '') + '" data-alerta="' + a[0] + '" aria-pressed="' + on + '"><span class="box">' + (on ? '✓' : '') + '</span><span>' + esc(a[1]) + '</span></button>'; }
+    var nenhum = st.alertas.length === 1 && st.alertas[0] === "nenhum";
+    return '<div class="kicker">Antes de começar</div><h2>Algum destes acontece com você agora?</h2>' +
+      '<p class="muted">Marque todos que valerem. Eles pedem atendimento antes de qualquer exercício.</p>' +
+      '<div class="group-title danger">Pedem atendimento imediato</div><div class="opts">' + ALERTAS.emergencia.map(function(a){ return item("e", a); }).join("") + '</div>' +
+      '<div class="group-title">Pedem avaliação antes de começar</div><div class="opts">' + ALERTAS.urgente.map(function(a){ return item("u", a); }).join("") + '</div>' +
+      '<div class="opts" style="margin-top:20px"><button type="button" class="opt' + (nenhum ? ' checked' : '') + '" data-alerta="nenhum" aria-pressed="' + nenhum + '"><span class="box">' + (nenhum ? '✓' : '') + '</span><span><b>Nenhum destes</b></span></button></div>' +
+      '<div class="row"><button type="button" class="linkbtn" data-act="voltar">← Voltar</button><button type="button" class="btn alt" data-act="alerta-ok"' + (st.alertas.length ? '' : ' disabled') + '>Continuar</button></div>' +
+      '<p class="fine">Sinais com base em ' + FONTES.nhs + ', ' + FONTES.ifompt + ' e ' + FONTES.coracao + '.</p>';
+  }
+
+  function cardProduto(p, principal){
+    var on = p.status === "no-ar" && p.link;
+    return '<div class="rec"><div class="label' + (principal ? ' main' : '') + '">' + (principal ? 'Recomendação principal' : 'Também combina') + '</div>' +
+      '<h3>' + esc(p.nome) + '</h3><p class="muted" style="margin:0">' + esc(p.resumo || "") + '</p>' +
+      (on ? '<div class="price" style="margin-top:8px">' + esc(p.preco) + '</div><a class="btn ' + (principal ? '' : 'alt ') + 'full" href="' + esc(p.link) + '">Conhecer</a>'
+          : '<p style="margin:10px 0 0"><span class="chip soon">Em breve</span></p>' + (FV.instagram ? '<a class="btn ghost full" href="' + esc(FV.instagram) + '" target="_blank" rel="noopener">Acompanhar o lançamento</a>' : '')) +
+      '</div>';
+  }
+  function cardTele(principal){
+    var t = FV.teleconsulta || {};
+    if (t.ativa){
+      return '<div class="rec"><div class="label' + (principal ? ' main' : '') + '">' + (principal ? 'Recomendação principal' : 'Se preferir acompanhamento') + '</div>' +
+        '<h3>Teleconsulta: um plano feito para você</h3><p class="muted" style="margin:0">' + esc(t.descricao || "") + '</p>' +
+        '<div class="price" style="margin-top:8px">' + esc(t.preco || "") + '</div>' +
+        (t.link ? '<a class="btn full" href="' + esc(t.link) + '" target="_blank" rel="noopener">Agendar teleconsulta</a>' : '') + '</div>';
+    }
+    return principal ? '<div class="rec"><div class="label main">Recomendação principal</div><h3>Avaliação com um fisioterapeuta</h3><p class="muted" style="margin:0">Pelo que você contou, o melhor começo é uma avaliação individual. Procure um fisioterapeuta perto de você.</p></div>' : '';
+  }
+
+  function telaResultado(){
+    var emerg = st.alertas.filter(function(a){ return ALERTAS.emergencia.some(function(x){ return x[0] === a; }); });
+    var urg = st.alertas.filter(function(a){ return ALERTAS.urgente.some(function(x){ return x[0] === a; }); });
+    var refazer = '<div class="row"><button type="button" class="linkbtn" data-act="refazer">Refazer o quiz</button><a class="btn ghost" href="index.html#guias">Ver todos os guias</a></div>';
+    if (emerg.length){
+      return '<div class="kicker">Resultado</div><h2>Procure atendimento agora</h2>' +
+        '<div class="res-alert danger"><b>Vá a um pronto-socorro ou ligue 192 (SAMU).</b><br>O que você marcou pede atendimento imediato. Por isso o quiz para aqui.</div>' +
+        '<p class="fine">Com base em ' + FONTES.nhs + ' e ' + FONTES.coracao + '.</p>' + refazer;
+    }
+    if (urg.length){
+      return '<div class="kicker">Resultado</div><h2>Comece por uma avaliação profissional</h2>' +
+        '<div class="res-alert warn">O que você marcou não quer dizer que exista algo grave. Mas pede uma avaliação com um profissional de saúde antes de começar exercícios por conta própria.</div>' +
+        '<p class="fine">Com base em ' + FONTES.ifompt + '.</p>' + refazer;
+    }
+    var temas = FV.temas || {}, prods = FV.produtos || [];
+    var tema = temas[st.regiao];
+    var guia = tema ? prods.filter(function(p){ return p.tema === st.regiao && p.tipo === "guia"; })[0] : null;
+    var plano = tema ? prods.filter(function(p){ return p.tema === st.regiao && p.tipo === "plano30"; })[0] : null;
+    if (st.regiao === "outro" || !tema || (!guia && !plano)){
+      var para = tema ? (tema.genero === "f" ? "a " : "o ") + tema.nome : "isso";
+      return '<div class="kicker">Resultado</div><h2>Ainda não temos um guia para ' + esc(para) + '</h2>' +
+        '<p class="muted">Os guias começam por regiões específicas e novos temas entram aos poucos.</p>' + cardTele(true) + refazer;
+    }
+    var em = tema.genero === "f" ? "na " : "no ";
+    var tempos = {agudo: "há menos de 6 semanas", sub: "entre 6 semanas e 3 meses", cronico: "há mais de 3 meses"};
+    var perfil = "Dor " + em + tema.nome + ", " + (tempos[st.tempo] || "");
+    if (st.irradia === "acima") perfil += ", que desce um pouco para o " + (tema.membro || "membro");
+    if (st.irradia === "abaixo") perfil += ", que desce com formigamento";
+    if (st.impacto === "muito") perfil += ", atrapalhando muito o dia";
+    var complexo = st.irradia === "abaixo" || st.impacto === "muito";
+    function noAr(p){ return p && p.status === "no-ar" && p.link; }
+    var blocos = [];
+    if (complexo || st.objetivo === "individual"){
+      blocos.push(cardTele(true));
+      if (complexo) blocos.push('<p class="muted" style="margin-top:12px">' + (st.irradia === "abaixo" ? "Dor que desce com formigamento merece uma avaliação individual antes de uma rotina por conta própria." : "Quando a dor atrapalha muito o trabalho ou o sono, vale uma avaliação individual primeiro.") + (guia ? ' Enquanto isso, o guia ajuda a entender o que acontece e o que evitar.' : '') + '</p>');
+      if (guia) blocos.push(cardProduto(guia, false));
+      if (!complexo && plano) blocos.push(cardProduto(plano, false));
+    } else {
+      // ordem pedida pela pessoa, mas o que está à venda vem primeiro
+      var pedida = st.objetivo === "rotina" ? [plano, guia] : [guia, plano];
+      var lista = pedida.filter(Boolean);
+      lista.sort(function(a, b){ return (noAr(a) ? 0 : 1) - (noAr(b) ? 0 : 1); });
+      lista.forEach(function(p, i){ blocos.push(cardProduto(p, i === 0)); });
+      if (!lista.some(noAr)) blocos.push('<p class="muted" style="margin-top:12px">Enquanto o guia não sai, se a dor continuar, procure um fisioterapeuta.</p>');
+      blocos.push(cardTele(false));
+    }
+    var oms = (st.regiao === "lombar" && st.tempo === "cronico") ? '<p class="fine">Para dor lombar há mais de 3 meses, a diretriz da OMS recomenda, entre outras abordagens, educação e programas de exercício (' + FONTES.oms + ').</p>' : '';
+    return '<div class="kicker">Resultado</div><h2>O que combina com você</h2>' +
+      '<p><b>Seu perfil:</b> ' + esc(perfil) + '.</p>' + blocos.join("") + oms +
+      '<p class="fine">Resultado educativo: não é diagnóstico. Se aparecer algum sinal de alerta, procure atendimento.</p>' + refazer;
+  }
+
+  function render(step){
+    if (step === "intro"){
+      $s.innerHTML = '<div class="kicker">Avaliação rápida</div><h1>Qual guia combina com você?</h1>' +
+        '<p class="muted">Até seis perguntas, cerca de 1 minuto. O resultado indica o guia, o plano de 30 dias ou o acompanhamento que faz mais sentido para o seu caso.</p>' +
+        '<div class="note">É educativo: não faz diagnóstico. Suas respostas ficam só neste navegador e não são gravadas nem enviadas.</div>' +
+        '<div class="row"><span></span><button type="button" class="btn" data-act="comecar">Começar</button></div>';
+    } else if (step === "alerta"){ $s.innerHTML = telaAlerta();
+    } else if (step === "resultado"){ $s.innerHTML = telaResultado();
+    } else { $s.innerHTML = telaPergunta(step); }
+  }
+
+  $s.addEventListener("click", function(e){
+    var b = e.target.closest("button,a"); if (!b) return;
+    var act = b.getAttribute("data-act");
+    if (act === "comecar"){ ir("alerta"); return; }
+    if (act === "voltar"){ voltar(); return; }
+    if (act === "refazer"){ reset(); ir("intro"); return; }
+    if (act === "alerta-ok"){ var emerg = st.alertas.some(function(a){ return a !== "nenhum"; }); ir(emerg ? "resultado" : "regiao"); return; }
+    var al = b.getAttribute("data-alerta");
+    if (al){
+      if (al === "nenhum"){ st.alertas = st.alertas[0] === "nenhum" ? [] : ["nenhum"]; }
+      else {
+        st.alertas = st.alertas.filter(function(a){ return a !== "nenhum"; });
+        var i = st.alertas.indexOf(al); if (i >= 0) st.alertas.splice(i, 1); else st.alertas.push(al);
+      }
+      render("alerta"); return;
+    }
+    var k = b.getAttribute("data-k");
+    if (k){
+      st[k] = b.getAttribute("data-v");
+      if (k === "regiao"){ st.tempo = st.irradia = st.impacto = st.objetivo = null; }
+      ir(proximo(k));
+    }
+  });
+
+  var teste = /teste/.test(location.hash) || /(^|[?&])teste/.test(location.search);
+  if (!FV.quizAtivo && !teste){
+    $s.innerHTML = '<div class="kicker">Em breve</div><h1>O quiz abre junto com o próximo guia</h1><p class="muted">Enquanto isso, veja os guias que já estão disponíveis.</p><div class="row"><span></span><a class="btn alt" href="index.html#guias">Ver os guias</a></div>';
+    $p.style.width = "0";
+  } else {
+    ir("intro");
+  }
+})();
+</script>
+</body>
+</html>
