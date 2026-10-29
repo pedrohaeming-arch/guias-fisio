@@ -10,9 +10,9 @@
      informe na conversa de agendamento.
    ===================================================================== */
 window.FV = {
-  marca: "FisioVault",                 // o mesmo nome do perfil de marca
-  autor: "[Seu nome]",
-  crefito: "CREFITO-[região] [número]",
+  marca: "Fisio de bolso",                 // o mesmo nome do perfil de marca
+  autor: "Pedro Henrique Pietrovski Tancredo Haeming",
+  crefito: "CREFITO-10 466644-F",
   email: "contato@seudominio.com",
   instagram: "",                       // ex.: "https://instagram.com/suamarca"
 
@@ -38,16 +38,10 @@ window.FV = {
   // status: "no-ar" ou "em-breve"
   produtos: [
     { id: "guia-lombar", tema: "lombar", tipo: "guia", status: "no-ar", preco: "R$ 37", link: "coluna.html",
-      nome: "Guia de bolso: [nome do guia de coluna]",
+      nome: "Guia de bolso: Entenda sua dor lombar",
       resumo: "O que acontece na coluna, o que fazer, o que evitar e uma rotina pronta." },
     { id: "plano-lombar", tema: "lombar", tipo: "plano30", status: "em-breve", preco: "R$ 147", link: "",
-      nome: "Manual de Coluna: plano de 30 dias",
-      resumo: "Os 4 guias de coluna num volume só e um plano de 30 dias como estrutura." },
-    { id: "guia-joelho", tema: "joelho", tipo: "guia", status: "em-breve", preco: "R$ 37", link: "",
-      nome: "Guia de bolso do joelho",
-      resumo: "Entender a dor no joelho e ter uma rotina segura para casa." },
-    { id: "guia-ombro", tema: "ombro", tipo: "guia", status: "em-breve", preco: "R$ 37", link: "",
-      nome: "Guia de bolso do ombro",
-      resumo: "Entender a dor no ombro e ter uma rotina segura para casa." }
+      nome: "Coluna sem mistério",
+      resumo: "Os 5 capítulos de coluna num volume só e um plano de 30 dias como estrutura." }
   ]
 };
