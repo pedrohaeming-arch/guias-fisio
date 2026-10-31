@@ -13,7 +13,7 @@ window.FV = {
   marca: "Fisio de bolso",                 // o mesmo nome do perfil de marca
   autor: "Pedro Henrique Pietrovski Tancredo Haeming",
   crefito: "CREFITO-10 466644-F",
-  email: "contato@seudominio.com",
+  email: "phantomvailt@outlook.com",
   instagram: "",                       // ex.: "https://instagram.com/suamarca"
 
   quizAtivo: false,                    // true quando o 2º tema tiver produto no ar
