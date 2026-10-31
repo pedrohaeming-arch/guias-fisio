@@ -139,14 +139,14 @@ details.faq p{margin:10px 0 0;color:var(--muted)}
           <li data-edit>O que fazer e o que evitar</li>
           <li data-edit>Uma rotina curta, pronta para seguir</li>
         </ul>
-        <p class="small muted" data-edit>A partir de R$ 37.</p>
+        <p class="small muted" data-edit>A partir de R$ 19,90.</p>
       </div>
       <div class="card level">
         <div class="tag">Plano de 30 dias por tema</div>
         <h3 data-edit>Uma rotina com começo, meio e fim</h3>
         <ul class="muted">
-          <li data-edit>Os guias do tema num volume só</li>
-          <li data-edit>Um plano de 30 dias, semana a semana</li>
+          <li data-edit>Os exercícios da coleção organizados em quatro momentos do dia</li>
+          <li data-edit>Um plano de 4 semanas e um calendário para marcar</li>
           <li data-edit>O mesmo plano para todos com aquele perfil</li>
         </ul>
         <p class="small muted" id="plano30Status" data-edit>Primeiro tema: coluna lombar.</p>
@@ -240,7 +240,7 @@ details.faq p{margin:10px 0 0;color:var(--muted)}
 
   // plano de 30 dias: mostra se o do primeiro tema já está no ar
   var plano = (FV.produtos || []).filter(function(p){ return p.tipo === "plano30" && p.status === "no-ar" && p.link; })[0];
-  if (plano){ document.getElementById("plano30Status").innerHTML = '<a class="btn alt full" href="' + esc(plano.link) + '">Ver o ' + esc(plano.nome) + ' · ' + esc(plano.preco) + '</a>'; }
+  if (plano){ document.getElementById("plano30Status").innerHTML = '<a class="btn alt full" href="' + esc(plano.link) + '">' + esc(plano.nome) + ' · ' + esc(plano.preco) + '</a>'; }
 
   // teleconsulta: o valor não aparece no site (Código de Ética da Fisioterapia, art. 40, I); é informado no agendamento
   var t = FV.teleconsulta || {};

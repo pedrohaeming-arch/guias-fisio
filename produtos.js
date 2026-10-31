@@ -34,14 +34,18 @@ window.FV = {
     quadril:  { nome: "quadril", genero: "m" }
   },
 
-  // tipo: "guia" (entender e começar) ou "plano30" (rotina de 30 dias do tema)
+  // tipo: "guia" (entender e começar), "plano30" (rotina de 30 dias do tema) ou "manual" (volume do tema)
   // status: "no-ar" ou "em-breve"
   produtos: [
-    { id: "guia-lombar", tema: "lombar", tipo: "guia", status: "no-ar", preco: "R$ 37", link: "coluna.html",
+    { id: "guia-lombar", tema: "lombar", tipo: "guia", status: "no-ar", preco: "R$ 19,90", link: "coluna.html",
       nome: "Guia de bolso: Entenda sua dor lombar",
       resumo: "O que acontece na coluna, o que fazer, o que evitar e uma rotina pronta." },
-    { id: "plano-lombar", tema: "lombar", tipo: "plano30", status: "em-breve", preco: "R$ 147", link: "",
+    { id: "rotina-lombar", tema: "lombar", tipo: "plano30", status: "em-breve", preco: "R$ 37", link: "",
+      nome: "Rotina da Lombar: plano de 30 dias",
+      resumo: "Onze exercícios da coleção em quatro momentos do dia, com plano de 4 semanas e calendário para marcar." },
+    // Manual "Coluna sem mistério" (R$ 147): oferta depois da Rotina. O tipo "manual" não aparece no catálogo nem no quiz.
+    { id: "manual-coluna", tema: "lombar", tipo: "manual", status: "em-breve", preco: "R$ 147", link: "",
       nome: "Coluna sem mistério",
-      resumo: "Os 5 capítulos de coluna num volume só e um plano de 30 dias como estrutura." }
+      resumo: "Os 5 capítulos de coluna num volume só." }
   ]
 };

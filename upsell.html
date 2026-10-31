@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Rotina da Lombar — Fisio de bolso</title>
+<!--
+  PÁGINA DE UPSELL (depois da compra do guia de entrada)
+  - A Hotmart manda o comprador para cá no Funil de Vendas.
+  - Cole em CONFIG.botaoHotmart o código do botão de 1 clique que a Hotmart gera
+    (Funil de Vendas → oferta de upsell → código do botão). Enquanto estiver vazio,
+    a página usa CONFIG.checkoutRotina (checkout normal) ou mostra "em breve".
+  - Sem preço "de/por", sem contagem regressiva e sem depoimento inventado (CDC e Res. COFFITO 532/2021).
+-->
+<script>
+const CONFIG = {
+  botaoHotmart: "",                       // HTML do botão de 1 clique da Hotmart
+  checkoutRotina: "",                     // link do checkout da Rotina (alternativa ao 1 clique)
+  recusarUrl: "index.html",               // para onde vai o "Não, obrigado" (a Hotmart também gera esse link)
+  metaPixelId: ""                         // mesmo ID da página do guia (deixe "" para não carregar)
+};
+</script>
+<link rel="stylesheet" href="estilo.css">
+<script src="produtos.js"></script>
+<style>
+.top{border-bottom:1px solid var(--line);padding-block:14px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800;text-decoration:none;color:var(--ink)}
+.ok{display:flex;gap:12px;align-items:flex-start;background:var(--brand-soft);border-radius:14px;padding:14px 16px;margin:28px 0 8px}
+.ok b{color:var(--brand)}
+.hero{padding-block:36px 24px}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.list{padding-left:0;list-style:none;margin:16px 0}
+.list li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid var(--line)}
+.list li::before{content:"✓";position:absolute;left:4px;color:var(--brand);font-weight:900}
+.buy{background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-lg)}
+.price{font-size:2.4rem;font-weight:900;letter-spacing:-.02em;margin:4px 0}
+.no{display:block;text-align:center;margin-top:14px;color:var(--muted);font-size:.92rem}
+.weeks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.week b{display:block;color:var(--accent);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.preview img{border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+@media (max-width:880px){.split{grid-template-columns:1fr}.weeks{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html" data-fv="marca">Fisio de bolso</a><span class="small muted">Pedido confirmado</span></div></header>
+
+<main class="wrap narrow">
+  <div class="ok"><span style="font-size:1.4rem">✓</span><div><b>Pagamento aprovado.</b> O seu guia já está a caminho do seu e-mail. Antes de fechar esta página, uma oferta que só aparece agora.</div></div>
+</main>
+
+<section class="hero">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Para quem acabou de levar o guia</span>
+      <h1>Rotina da Lombar: os 3 exercícios do seu guia viram uma rotina de 30 dias</h1>
+      <p class="lead">Onze exercícios da coleção, organizados em quatro momentos do dia, com a dose e o aviso de cada documento de origem.</p>
+      <ul class="list">
+        <li><b>Quatro momentos do dia:</b> ao acordar, no chão, nas pausas do trabalho e no fim do dia</li>
+        <li><b>Plano das 4 semanas:</b> começa pela sessão no chão e acrescenta um momento por semana</li>
+        <li><b>Calendário de 30 dias</b> para marcar e um check semanal</li>
+        <li><b>Mito x realidade:</b> cinco crenças que fazem a pessoa parar de se mexer, com a fonte de cada uma</li>
+        <li>PDF de 23 páginas, ilustrado, para ler no celular ou imprimir</li>
+      </ul>
+    </div>
+    <div class="buy" id="comprar">
+      <p class="small muted" style="margin:0">Rotina da Lombar · PDF</p>
+      <div class="price" id="preco">R$ 37</div>
+      <p class="small muted">Garantia de 7 dias pela plataforma de pagamento.</p>
+      <div id="botao"></div>
+      <a class="no" id="recusar" href="index.html">Não, obrigado. Quero só o guia.</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="wrap">
+    <h2 class="center">Como as 4 semanas funcionam</h2>
+    <div class="weeks">
+      <div class="week"><b>Semana 1</b>Só a sessão no chão: respiração, báscula pélvica, rotação lombar e gato.</div>
+      <div class="week"><b>Semana 2</b>Entram os dois movimentos ao acordar.</div>
+      <div class="week"><b>Semana 3</b>Entram as pausas do trabalho, nos dias de expediente.</div>
+      <div class="week"><b>Semana 4</b>Entra o fim do dia; o inseto morto, quando os outros estiverem confortáveis.</div>
+    </div>
+    <p class="small muted center" style="margin-top:14px">Se uma semana ficar pesada, a orientação é repetir a anterior. Se a dor aumentar ou descer para a perna, parar e procurar avaliação.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap split">
+    <div class="preview"><img src="img/rotina-plano.jpg" alt="Página do plano das 4 semanas da Rotina da Lombar" loading="lazy"></div>
+    <div>
+      <h2>De onde vêm os exercícios</h2>
+      <p>De seis guias da coleção, que por sua vez seguem documentos do NHS (o sistema público de saúde do Reino Unido), da Cleveland Clinic e da Mayfield Clinic. Cada página traz a fonte e o "Não faça se" do documento original.</p>
+      <p class="muted">Material educativo: não substitui avaliação, diagnóstico ou tratamento individual.</p>
+      <a class="btn" href="#comprar">Quero a Rotina da Lombar</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b data-fv="marca">Fisio de bolso</b> · <span data-fv="autor">Pedro Henrique Pietrovski Tancredo Haeming</span>, fisioterapeuta · <span data-fv="crefito">CREFITO-10 466644-F</span></p>
+    <p><a href="privacidade.html">Privacidade</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var FV = window.FV || {};
+  ["marca","autor","crefito"].forEach(function(k){ if (FV[k]) document.querySelectorAll('[data-fv="' + k + '"]').forEach(function(el){ el.textContent = FV[k]; }); });
+  var r = (FV.produtos || []).filter(function(p){ return p.id === "rotina-lombar"; })[0];
+  if (r && r.preco) document.getElementById("preco").textContent = r.preco;
+  var box = document.getElementById("botao");
+  if (CONFIG.botaoHotmart) { box.innerHTML = CONFIG.botaoHotmart; }
+  else if (CONFIG.checkoutRotina) { box.innerHTML = '<a class="btn full" href="' + CONFIG.checkoutRotina + '">Quero a Rotina da Lombar</a>'; }
+  else { box.innerHTML = '<button class="btn full" disabled>Disponível em breve</button>'; }
+  document.getElementById("recusar").href = CONFIG.recusarUrl || "index.html";
+  if (CONFIG.metaPixelId) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', CONFIG.metaPixelId); fbq('track','PageView');
+  }
+})();
+</script>
+</body>
+</html>

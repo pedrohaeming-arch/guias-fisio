@@ -9,7 +9,9 @@ Site da marca e páginas de venda dos guias de bolso de fisioterapia.
 | `index.html` | Início da marca: quem escreve, como os guias são feitos, catálogo e planos |
 | `coluna.html` | Página de vendas do guia de entrada de coluna (link da bio durante a validação) |
 | `quiz.html` | Quiz rápido e educativo que indica o guia, o plano de 30 dias ou uma avaliação individual |
+| `upsell.html` | Oferta da Rotina da Lombar (R$ 37) depois da compra do guia; recebe o botão de 1 clique da Hotmart |
 | `privacidade.html` | Aviso de privacidade (LGPD) |
+| `img/` | Imagens da página de oferta |
 | `produtos.js` | Configuração: marca, CREFITO, produtos, quiz e teleconsulta |
 | `estilo.css` | Cores e estilos do início, do quiz e da privacidade |
 | `en/` | Versão em inglês, congelada e sem link no site |
