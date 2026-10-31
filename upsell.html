@@ -8,14 +8,12 @@
 <!--
   PÁGINA DE UPSELL (depois da compra do guia de entrada)
   - A Hotmart manda o comprador para cá no Funil de Vendas.
-  - Cole em CONFIG.botaoHotmart o código do botão de 1 clique que a Hotmart gera
-    (Funil de Vendas → oferta de upsell → código do botão). Enquanto estiver vazio,
-    a página usa CONFIG.checkoutRotina (checkout normal) ou mostra "em breve".
+  - O widget do Funil de Vendas da Hotmart (botões de compra em 1 clique e de recusa) fica em #hotmart-sales-funnel.
+    Se em 5 segundos ele não aparecer (página aberta fora do funil), entra o link do checkout normal da Rotina.
   - Sem preço "de/por", sem contagem regressiva e sem depoimento inventado (CDC e Res. COFFITO 532/2021).
 -->
 <script>
 const CONFIG = {
-  botaoHotmart: "",                       // HTML do botão de 1 clique da Hotmart
   checkoutRotina: "https://pay.hotmart.com/W108273061M",                     // link do checkout da Rotina (alternativa ao 1 clique)
   recusarUrl: "index.html",               // para onde vai o "Não, obrigado" (a Hotmart também gera esse link)
   metaPixelId: ""                         // mesmo ID da página do guia (deixe "" para não carregar)
@@ -69,6 +67,13 @@ const CONFIG = {
       <p class="small muted" style="margin:0">Rotina da Lombar · PDF</p>
       <div class="price" id="preco">R$ 37</div>
       <p class="small muted">Garantia de 7 dias pela plataforma de pagamento.</p>
+      <!-- HOTMART - Sales Funnel Widget -->
+      <div id="hotmart-sales-funnel"></div>
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      </script>
+      <!-- HOTMART - Sales Funnel Widget -->
       <div id="botao"></div>
       <a class="no" id="recusar" href="index.html">Não, obrigado. Quero só o guia.</a>
     </div>
@@ -114,10 +119,18 @@ const CONFIG = {
   var r = (FV.produtos || []).filter(function(p){ return p.id === "rotina-lombar"; })[0];
   if (r && r.preco) document.getElementById("preco").textContent = r.preco;
   var box = document.getElementById("botao");
-  if (CONFIG.botaoHotmart) { box.innerHTML = CONFIG.botaoHotmart; }
-  else if (CONFIG.checkoutRotina) { box.innerHTML = '<a class="btn full" href="' + CONFIG.checkoutRotina + '">Quero a Rotina da Lombar</a>'; }
-  else { box.innerHTML = '<button class="btn full" disabled>Disponível em breve</button>'; }
-  document.getElementById("recusar").href = CONFIG.recusarUrl || "index.html";
+  var recusar = document.getElementById("recusar");
+  recusar.href = CONFIG.recusarUrl || "index.html";
+  recusar.hidden = true;
+  // o widget da Hotmart já traz os botões de compra e de recusa; sem ele, entra o checkout normal
+  function reserva(){
+    if (document.getElementById("hotmart-sales-funnel").children.length) return;
+    box.innerHTML = CONFIG.checkoutRotina
+      ? '<a class="btn full" href="' + CONFIG.checkoutRotina + '">Quero a Rotina da Lombar</a>'
+      : '<button class="btn full" disabled>Disponível em breve</button>';
+    recusar.hidden = false;
+  }
+  setTimeout(reserva, 5000);
   if (CONFIG.metaPixelId) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', CONFIG.metaPixelId); fbq('track','PageView');
