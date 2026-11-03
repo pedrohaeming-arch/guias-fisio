@@ -10,8 +10,11 @@ Site da marca e páginas de venda dos guias de bolso de fisioterapia.
 | `coluna.html` | Página de vendas do guia de entrada de coluna (link da bio durante a validação) |
 | `quiz.html` | Quiz rápido e educativo que indica o guia, o plano de 30 dias ou uma avaliação individual |
 | `upsell.html` | Oferta da Rotina da Lombar (R$ 37) depois da compra do guia; recebe o botão de 1 clique da Hotmart |
+| `obrigado.html` | Página de obrigado no fim do Funil de Vendas da Hotmart |
+| `guia/` | Atalho `/guia` → página do guia (funciona no GitHub Pages) |
+| `_redirects` | Atalhos curtos no Cloudflare Pages: `/guia`, `/lombar`, `/rotina`, `/obrigado` |
 | `privacidade.html` | Aviso de privacidade (LGPD) |
-| `img/` | Imagens da página de oferta |
+| `img/` | Capa do guia, prévia das páginas internas e imagens da oferta da Rotina |
 | `produtos.js` | Configuração: marca, CREFITO, produtos, quiz e teleconsulta |
 | `estilo.css` | Cores e estilos do início, do quiz e da privacidade |
 | `en/` | Versão em inglês, congelada e sem link no site |
@@ -30,3 +33,7 @@ Abra `produtos.js`, troque o `status` do produto de `"em-breve"` para `"no-ar"` 
 ## Hospedagem
 
 Cloudflare Pages conectado a este repositório (o GitHub Pages não permite uso para negócio online).
+
+## Funil (Hotmart)
+
+Guia (R$ 19,90, checkout T108272960X) → order bump Calendário da Lombar (de R$ 15,00 por R$ 9,90, no checkout) → Rotina da Lombar em 1 clique (R$ 37, `upsell.html`) → `obrigado.html`.

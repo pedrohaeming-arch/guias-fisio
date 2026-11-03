@@ -39,8 +39,8 @@ window.FV = {
   produtos: [
     { id: "guia-lombar", tema: "lombar", tipo: "guia", status: "no-ar", preco: "R$ 19,90", link: "coluna.html",
       nome: "Guia de bolso: Entenda sua dor lombar",
-      resumo: "O que acontece na coluna, o que fazer, o que evitar e uma rotina pronta." },
-    { id: "rotina-lombar", tema: "lombar", tipo: "plano30", status: "em-breve", preco: "R$ 37", link: "",
+      resumo: "O que a OMS recomenda para a dor lombar crônica, 3 exercícios com fonte, os mitos mais comuns e um checklist." },
+    { id: "rotina-lombar", tema: "lombar", tipo: "plano30", status: "no-ar", preco: "R$ 37", link: "https://pay.hotmart.com/W108273061M",
       nome: "Rotina da Lombar: plano de 30 dias",
       resumo: "Onze exercícios da coleção em quatro momentos do dia, com plano de 4 semanas e calendário para marcar." },
     // Manual "Coluna sem mistério" (R$ 147): oferta depois da Rotina. O tipo "manual" não aparece no catálogo nem no quiz.

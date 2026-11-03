@@ -203,7 +203,7 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
   .offer.featured{order:-1;transform:none}
   .guarantee{flex-direction:column;text-align:center}
   section{padding:52px 0}
-  .img-slot.hero-img{max-width:340px;margin:0 auto}
+  .img-slot.hero-img{max-width:340px;width:100%;margin:0 auto}
   .topbar{padding-right:84px;font-size:.84rem}
   .author{text-align:center}
   .stickybar{display:flex}
@@ -231,7 +231,7 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
       <h1 data-edit>Pare de adivinhar o que fazer pela sua dor</h1>
       <p class="lead" data-edit>Guias curtos e ilustrados, escritos por fisioterapeuta, com a fonte ao lado de cada afirmação. Você sai sabendo o que fazer — e o que parar de fazer.</p>
       <ul class="checks">
-        <li data-edit><strong>Sai sabendo o que fazer:</strong> 3 a 5 exercícios ilustrados, com execução, tempo e repetições</li>
+        <li data-edit><strong>Sai sabendo o que fazer:</strong> 3 exercícios ilustrados, com execução, repetições, quando não fazer e a fonte de cada um</li>
         <li data-edit><strong>E o que parar de fazer:</strong> os mitos mais comuns desfeitos, com a fonte de cada um</li>
         <li data-edit><strong>Sem depender da memória:</strong> rotina pronta para colar na geladeira</li>
         <li data-edit><strong>Curto de propósito:</strong> PDF de bolso, confortável de ler no celular</li>
@@ -239,7 +239,7 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
       <a class="btn cta" href="#ofertas" data-edit>Quero saber o que fazer →</a>
       <p class="trustline" data-edit><b>Acesso imediato</b> por e-mail · <b>Pagamento seguro</b> · <b>7 dias</b> de garantia</p>
     </div>
-    <div class="img-slot hero-img" data-img>Clique para colocar o mockup do guia<br>(capa em 3D ou foto do celular)</div>
+    <div class="img-slot hero-img filled" data-img><img alt="Capa do guia de bolso Entenda sua dor lombar" src="img/guia-capa.jpg"></div>
   </div>
 </header>
 
@@ -325,16 +325,16 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
         <div class="head" data-edit>Prévia — um mito de dentro do guia</div>
         <table>
           <tr>
-            <td data-edit>Coloque aqui um mito real do seu guia</td>
-            <td data-edit>Escreva a realidade em uma ou duas linhas, do jeito que você explicaria para um paciente.<span class="src" data-edit>Fonte: nome do documento, instituição, ano</span></td>
+            <td data-edit>“Preciso de uma ressonância para descobrir a causa.”</td>
+            <td data-edit>Sem sinais de alerta, exame de imagem nas primeiras seis semanas não melhora o resultado, aumenta a chance de cirurgia e costuma mostrar alterações que também aparecem em quem não tem dor.<span class="src" data-edit>Fonte: Choosing Wisely — American Academy of Family Physicians, 2012</span></td>
           </tr>
           <tr>
-            <td data-edit>Coloque aqui um segundo mito</td>
-            <td data-edit>Dois mitos de verdade aqui convencem mais que qualquer outra coisa nesta página — é a amostra do produto.<span class="src" data-edit>Fonte: nome do documento, instituição, ano</span></td>
+            <td data-edit>“Dor nas costas não é coisa séria.”</td>
+            <td data-edit>A dor lombar é a principal causa de incapacidade no mundo e afetou 619 milhões de pessoas em 2020.<span class="src" data-edit>Fonte: Organização Mundial da Saúde — ficha Low back pain, 2023</span></td>
           </tr>
         </table>
       </div>
-      <div class="img-slot wide" data-img style="margin-top:22px">Clique para colocar uma prévia das páginas internas</div>
+      <div class="img-slot wide filled" data-img style="margin-top:22px"><img alt="Três páginas internas do guia: o que fazer e dois exercícios ilustrados" src="img/guia-paginas.jpg"></div>
     </div>
   </div>
 </section>
@@ -392,15 +392,16 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
         <p class="muted small" data-edit>O que acontece na lombar, o que fazer, o que evitar e uma rotina pronta.</p>
         <div class="price" data-edit>R$ 19,90</div>
         <ul>
-          <li data-edit>Guia de bolso em PDF</li>
-          <li data-edit>Exercícios ilustrados, com execução, tempo e repetições</li>
+          <li data-edit>Guia de bolso em PDF, 9 páginas</li>
+          <li data-edit>O que a diretriz da OMS recomenda para a dor lombar crônica</li>
+          <li data-edit>3 exercícios ilustrados, com a fonte de cada um</li>
           <li data-edit>Tabela de mitos com a fonte de cada um</li>
-          <li data-edit>Rotina pronta para colar na geladeira</li>
+          <li data-edit>Checklist para marcar no fim do dia</li>
         </ul>
         <a class="btn full" data-checkout="checkoutGuia" href="#" data-edit>Quero o guia</a>
       </div>
     </div>
-    <p class="center small muted" style="margin-top:24px" data-edit>Pagamento seguro · Acesso enviado por e-mail na hora</p>
+    <p class="center small muted" style="margin-top:24px" data-edit>Pagamento seguro · Acesso enviado por e-mail na hora<br>No pagamento, você pode incluir o Calendário da Lombar: os 3 exercícios do guia num plano de 4 semanas para imprimir.</p>
   </div>
 </section>
 
@@ -425,7 +426,7 @@ body.editing .img-slot{cursor:pointer;outline:2px dashed #facc15}
       <span class="eyebrow" data-edit>Quem escreveu</span>
       <h2 data-edit>Pedro Henrique Pietrovski Tancredo Haeming, fisioterapeuta</h2>
       <p class="muted" data-edit>CREFITO-10 466644-F</p>
-      <p data-edit>Escreva aqui em 3 ou 4 linhas: sua formação, há quanto tempo atende, com que tipo de paciente trabalha e por que resolveu criar os guias. Fale como fala com um paciente no consultório — esta é a parte da página que mais constrói confiança.</p>
+      <p data-edit>Sou fisioterapeuta. Criei os guias de bolso para que você tenha em mãos, em linguagem simples, o que as diretrizes de saúde recomendam — com a fonte ao lado de cada afirmação, para conferir se quiser. É material educativo: não substitui uma avaliação individual.</p>
     </div>
   </div>
 </section>
