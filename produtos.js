@@ -39,11 +39,11 @@ window.FV = {
   produtos: [
     { id: "guia-lombar", tema: "lombar", tipo: "guia", status: "no-ar", preco: "R$ 19,90", link: "coluna.html",
       nome: "Guia de bolso: Entenda sua dor lombar",
-      resumo: "O que a OMS recomenda para a dor lombar crônica, 3 exercícios com fonte, os mitos mais comuns e um checklist." },
+      resumo: "O que a OMS recomenda para a dor lombar crônica, 5 exercícios com fonte, os mitos mais comuns e um checklist." },
     { id: "calendario-lombar", tema: "lombar", tipo: "calendario", status: "no-ar", preco: "R$ 15,00", link: "https://pay.hotmart.com/X108273001H",
       nome: "Calendário da Lombar: 30 dias para imprimir", botao: "Comprar o calendário",
       obs: "Junto com o guia, no pagamento: R$ 9,90.",
-      resumo: "Os 3 exercícios do guia num plano de 4 semanas, com calendário de 30 dias para marcar. 5 folhas A4 em PDF." },
+      resumo: "3 exercícios do guia num plano de 4 semanas, com calendário de 30 dias para marcar. 5 folhas A4 em PDF." },
     { id: "rotina-lombar", tema: "lombar", tipo: "plano30", status: "no-ar", preco: "R$ 37", link: "https://pay.hotmart.com/W108273061M",
       nome: "Rotina da Lombar: plano de 30 dias", botao: "Comprar a rotina",
       resumo: "Onze exercícios da coleção em quatro momentos do dia, com plano de 4 semanas e calendário para marcar." },
