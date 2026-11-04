@@ -111,6 +111,9 @@ const CONFIG = {
   recusar.hidden = true;
   // o widget da Hotmart já traz os botões de compra e de recusa; sem ele, entra o checkout normal
   // dentro do funil (widget carregado), mostra o "de/por": o "de" é o preço avulso do catálogo
+  // o preço do funil vem no link da etapa (ex.: ?p=97), configurado na Hotmart junto com a oferta certa
+  var pq = new URLSearchParams(location.search).get("p");
+  if (!CONFIG.precoFunil && pq === "97") CONFIG.precoFunil = "R$ 97";
   var avulso = (r && r.preco) || "R$ 147";
   function dePor(){
     if (!CONFIG.precoFunil || !document.getElementById("hotmart-sales-funnel").children.length) return false;
