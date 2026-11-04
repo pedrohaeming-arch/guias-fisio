@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Manual da Coluna — Fisio de bolso</title>
+<!--
+  PÁGINA DE UPSELL DO MANUAL (depois da compra da Rotina da Lombar)
+  - A Hotmart manda o comprador para cá no Funil de Vendas.
+  - O widget do Funil de Vendas da Hotmart (botões de compra em 1 clique e de recusa) fica em #hotmart-sales-funnel.
+    Se em 5 segundos ele não aparecer (página aberta fora do funil), entra o link do checkout normal da Rotina.
+  - Sem contagem regressiva e sem depoimento inventado (CDC e Res. COFFITO 532/2021).
+-->
+<script>
+const CONFIG = {
+  checkoutRotina: "",                     // link do checkout do Manual (alternativa ao 1 clique)
+  precoFunil: "",                         // preço do Manual dentro do funil (ex.: "R$ 97"); vazio = mostra só o preço avulso
+  recusarUrl: "index.html",               // para onde vai o "Não, obrigado" (a Hotmart também gera esse link)
+  metaPixelId: "1455054329896870"                         // mesmo ID da página do guia (deixe "" para não carregar)
+};
+</script>
+<link rel="stylesheet" href="estilo.css">
+<script src="produtos.js"></script>
+<style>
+.top{border-bottom:1px solid var(--line);padding-block:14px}
+.top .wrap{display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800;text-decoration:none;color:var(--ink)}
+.ok{display:flex;gap:12px;align-items:flex-start;background:var(--brand-soft);border-radius:14px;padding:14px 16px;margin:28px 0 8px}
+.ok b{color:var(--brand)}
+.hero{padding-block:36px 24px}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.list{padding-left:0;list-style:none;margin:16px 0}
+.list li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid var(--line)}
+.list li::before{content:"✓";position:absolute;left:4px;color:var(--brand);font-weight:900}
+.buy{background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-lg)}
+.price{font-size:2.4rem;font-weight:900;letter-spacing:-.02em;margin:4px 0}
+.no{display:block;text-align:center;margin-top:14px;color:var(--muted);font-size:.92rem}
+.weeks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.week b{display:block;color:var(--accent);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.preview img{border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+@media (max-width:880px){.split{grid-template-columns:1fr}.weeks{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html" data-fv="marca">Fisio de bolso</a><span class="small muted">Pedido confirmado</span></div></header>
+
+<main class="wrap narrow">
+  <div class="ok"><span style="font-size:1.4rem">✓</span><div><b>Pagamento aprovado.</b> A sua compra já está a caminho do seu e-mail. Antes de fechar esta página: se quiser entender a coluna inteira, do pescoço à lombar, o Manual da Coluna sai aqui em 1 clique, sem digitar o cartão de novo.</div></div>
+</main>
+
+<section class="hero">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Para quem acabou de levar a Rotina</span>
+      <h1>Manual da Coluna: cinco temas, do pescoço à lombar</h1>
+      <p class="lead">Cinco guias da coleção num volume só, com o que os documentos dizem sobre cada tema e os exercícios do protocolo que sustenta cada capítulo.</p>
+      <ul class="list">
+        <li><b>A dor lombar crônica:</b> o que a diretriz da OMS recomenda</li>
+        <li><b>A hérnia de disco:</b> o que o exame mostra e o que ele não diz</li>
+        <li><b>Postura e trabalho sentado</b></li>
+        <li><b>O pescoço e a tela</b></li>
+        <li><b>O quente e o frio:</b> quando usar cada um</li>
+        <li>PDF de 47 páginas, ilustrado, com a fonte de cada afirmação</li>
+      </ul>
+    </div>
+    <div class="buy" id="comprar">
+      <p class="small muted" style="margin:0">Manual da Coluna · PDF</p>
+      <div class="price" id="preco">R$ 147</div>
+      <p class="small muted" id="avulso" hidden style="margin:0 0 6px"></p>
+      <p class="small muted">Garantia de 7 dias pela plataforma de pagamento.</p>
+      <!-- HOTMART - Sales Funnel Widget -->
+      <div id="hotmart-sales-funnel"></div>
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      </script>
+      <!-- HOTMART - Sales Funnel Widget -->
+      <div id="botao"></div>
+      <a class="no" id="recusar" href="index.html">Não, obrigado.</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="wrap narrow">
+    <h2>De onde vem o conteúdo</h2>
+    <p>Dos guias da coleção, que seguem documentos com nome: diretriz da OMS de 2023, NICE, NHS, AAOS, Mayfield Clinic e outros. Cada capítulo traz a fonte e o "Não faça se" do documento original.</p>
+    <p class="muted">Material educativo: não substitui avaliação, diagnóstico ou tratamento individual.</p>
+    <a class="btn" href="#comprar">Quero o Manual da Coluna</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b data-fv="marca">Fisio de bolso</b> · <span data-fv="autor">Pedro Henrique Pietrovski Tancredo Haeming</span>, fisioterapeuta · <span data-fv="crefito">CREFITO-10 466644-F</span></p>
+    <p><a href="privacidade.html">Privacidade</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var FV = window.FV || {};
+  ["marca","autor","crefito"].forEach(function(k){ if (FV[k]) document.querySelectorAll('[data-fv="' + k + '"]').forEach(function(el){ el.textContent = FV[k]; }); });
+  var r = (FV.produtos || []).filter(function(p){ return p.id === "manual-coluna"; })[0];
+  if (r && r.preco) document.getElementById("preco").textContent = r.preco;
+  var box = document.getElementById("botao");
+  var recusar = document.getElementById("recusar");
+  recusar.href = CONFIG.recusarUrl || "index.html";
+  recusar.hidden = true;
+  // o widget da Hotmart já traz os botões de compra e de recusa; sem ele, entra o checkout normal
+  // dentro do funil (widget carregado), mostra o "de/por": o "de" é o preço avulso do catálogo
+  var avulso = (r && r.preco) || "R$ 147";
+  function dePor(){
+    if (!CONFIG.precoFunil || !document.getElementById("hotmart-sales-funnel").children.length) return false;
+    document.getElementById("preco").innerHTML = '<s style="font-size:1.2rem;color:var(--muted);font-weight:700">' + avulso + '</s> ' + CONFIG.precoFunil;
+    var a = document.getElementById("avulso"); a.textContent = "Avulso, o Manual custa " + avulso + ". Este preço vale nesta página, logo depois da compra."; a.hidden = false;
+    return true;
+  }
+  var tent = 0, iv = setInterval(function(){ if (dePor() || ++tent > 20) clearInterval(iv); }, 500);
+  function reserva(){
+    if (document.getElementById("hotmart-sales-funnel").children.length) return;
+    box.innerHTML = CONFIG.checkoutRotina
+      ? '<a class="btn full" href="' + CONFIG.checkoutRotina + '">Quero o Manual da Coluna</a>'
+      : '<button class="btn full" disabled>Disponível em breve</button>';
+    recusar.hidden = false;
+  }
+  setTimeout(reserva, 5000);
+  if (CONFIG.metaPixelId) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', CONFIG.metaPixelId); fbq('track','PageView');
+  }
+})();
+</script>
+</body>
+</html>

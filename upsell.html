@@ -15,6 +15,7 @@
 <script>
 const CONFIG = {
   checkoutRotina: "https://pay.hotmart.com/W108273061M",                     // link do checkout da Rotina (alternativa ao 1 clique)
+  precoFunil: "",                         // preço da Rotina dentro do funil (ex.: "R$ 27"); vazio = mostra só o preço avulso
   recusarUrl: "index.html",               // para onde vai o "Não, obrigado" (a Hotmart também gera esse link)
   metaPixelId: "1455054329896870"                         // mesmo ID da página do guia (deixe "" para não carregar)
 };
@@ -46,15 +47,15 @@ const CONFIG = {
 <header class="top"><div class="wrap"><a class="brand" href="index.html" data-fv="marca">Fisio de bolso</a><span class="small muted">Pedido confirmado</span></div></header>
 
 <main class="wrap narrow">
-  <div class="ok"><span style="font-size:1.4rem">✓</span><div><b>Pagamento aprovado.</b> O seu guia já está a caminho do seu e-mail. Antes de fechar esta página: se quiser transformar o guia numa rotina, a Rotina da Lombar sai aqui em 1 clique, sem digitar o cartão de novo.</div></div>
+  <div class="ok"><span style="font-size:1.4rem">✓</span><div><b>Pagamento aprovado.</b> A sua compra já está a caminho do seu e-mail. Antes de fechar esta página: se quiser transformar os exercícios numa rotina, a Rotina da Lombar sai aqui em 1 clique, sem digitar o cartão de novo.</div></div>
 </main>
 
 <section class="hero">
   <div class="wrap split">
     <div>
-      <span class="eyebrow">Para quem acabou de levar o guia</span>
-      <h1>Rotina da Lombar: do seu guia para uma rotina de 30 dias</h1>
-      <p class="lead">Onze exercícios — os 3 do seu guia e mais 8 da coleção — organizados em quatro momentos do dia, com a dose e o aviso de cada documento de origem.</p>
+      <span class="eyebrow">Para quem acabou de comprar</span>
+      <h1>Rotina da Lombar: dos exercícios para uma rotina de 30 dias</h1>
+      <p class="lead">Onze exercícios — os 3 do Calendário, que também estão no guia, e mais 8 da coleção — organizados em quatro momentos do dia, com a dose e o aviso de cada documento de origem.</p>
       <ul class="list">
         <li><b>Quatro momentos do dia:</b> ao acordar, no chão, nas pausas do trabalho e no fim do dia</li>
         <li><b>Plano das 4 semanas:</b> começa pela sessão no chão e acrescenta um momento por semana</li>
@@ -66,6 +67,7 @@ const CONFIG = {
     <div class="buy" id="comprar">
       <p class="small muted" style="margin:0">Rotina da Lombar · PDF</p>
       <div class="price" id="preco">R$ 37</div>
+      <p class="small muted" id="avulso" hidden style="margin:0 0 6px"></p>
       <p class="small muted">Garantia de 7 dias pela plataforma de pagamento.</p>
       <!-- HOTMART - Sales Funnel Widget -->
       <div id="hotmart-sales-funnel"></div>
@@ -75,7 +77,7 @@ const CONFIG = {
       </script>
       <!-- HOTMART - Sales Funnel Widget -->
       <div id="botao"></div>
-      <a class="no" id="recusar" href="index.html">Não, obrigado. Quero só o guia.</a>
+      <a class="no" id="recusar" href="index.html">Não, obrigado.</a>
     </div>
   </div>
 </section>
@@ -123,6 +125,15 @@ const CONFIG = {
   recusar.href = CONFIG.recusarUrl || "index.html";
   recusar.hidden = true;
   // o widget da Hotmart já traz os botões de compra e de recusa; sem ele, entra o checkout normal
+  // dentro do funil (widget carregado), mostra o "de/por": o "de" é o preço avulso do catálogo
+  var avulso = (r && r.preco) || "R$ 37";
+  function dePor(){
+    if (!CONFIG.precoFunil || !document.getElementById("hotmart-sales-funnel").children.length) return false;
+    document.getElementById("preco").innerHTML = '<s style="font-size:1.2rem;color:var(--muted);font-weight:700">' + avulso + '</s> ' + CONFIG.precoFunil;
+    var a = document.getElementById("avulso"); a.textContent = "Avulsa, a Rotina custa " + avulso + ". Este preço vale nesta página, logo depois da compra."; a.hidden = false;
+    return true;
+  }
+  var tent = 0, iv = setInterval(function(){ if (dePor() || ++tent > 20) clearInterval(iv); }, 500);
   function reserva(){
     if (document.getElementById("hotmart-sales-funnel").children.length) return;
     box.innerHTML = CONFIG.checkoutRotina
