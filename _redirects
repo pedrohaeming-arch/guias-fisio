@@ -1,6 +1,6 @@
 # Cloudflare Pages — atalhos curtos (fisiodebolso.pages.dev/...)
-/guia      /coluna.html   301
-/guia/     /coluna.html   301
-/lombar    /coluna.html   301
-/rotina    /upsell.html   302
-/obrigado  /obrigado.html 301
+# /obrigado e /upsell já abrem sozinhos (o Cloudflare serve obrigado.html em /obrigado); não redirecionar para o mesmo nome, senão vira laço.
+/guia      /coluna   301
+/guia/     /coluna   301
+/lombar    /coluna   301
+/rotina    /upsell   302
