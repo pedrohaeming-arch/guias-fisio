@@ -234,7 +234,7 @@ details.faq p{margin:10px 0 0;color:var(--muted)}
       '<div>' + (on ? '<span class="chip on">Disponível</span>' : '<span class="chip soon">Em breve</span>') + '</div>' +
       '<h3>' + esc(p.nome) + '</h3>' +
       '<p class="muted" style="margin:0">' + esc(p.resumo || "") + '</p>' +
-      (on ? '<div class="price">' + esc(p.preco) + '</div><a class="btn alt full" href="' + esc(p.link) + '">Conhecer o guia</a>'
+      (on ? '<div class="price">' + esc(p.preco) + '</div>' + (p.obs ? '<p class="small muted" style="margin:0">' + esc(p.obs) + '</p>' : '') + '<a class="btn alt full" href="' + esc(p.link) + '">' + esc(p.botao || "Conhecer o guia") + '</a>'
           : (FV.instagram ? '<a class="btn ghost full" href="' + esc(FV.instagram) + '" target="_blank" rel="noopener">Acompanhar o lançamento</a>' : '<p class="small muted" style="margin:auto 0 0">Lançamento em breve.</p>')) +
       '</article>';
   }).join("");
