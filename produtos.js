@@ -47,9 +47,9 @@ window.FV = {
     { id: "rotina-lombar", tema: "lombar", tipo: "plano30", status: "no-ar", preco: "R$ 37", link: "https://pay.hotmart.com/W108273061M?checkoutMode=10",
       nome: "Rotina da Lombar: plano de 30 dias", botao: "Comprar a rotina",
       resumo: "Onze exercícios da coleção em quatro momentos do dia, com plano de 4 semanas e calendário para marcar." },
-    // Manual "Coluna sem mistério" (R$ 147): oferta depois da Rotina. O tipo "manual" não aparece no catálogo nem no quiz.
+    // Manual da Coluna (R$ 147; produto 8886835 na Hotmart): oferta de 1 clique depois da Rotina (R$ 97 no funil). Fica "em-breve" até o cadastro ser finalizado; aí: status "no-ar" + link do checkout.
     { id: "manual-coluna", tema: "lombar", tipo: "manual", status: "em-breve", preco: "R$ 147", link: "",
-      nome: "Coluna sem mistério",
-      resumo: "Os 5 capítulos de coluna num volume só." }
+      nome: "Manual da Coluna",
+      resumo: "Cinco temas da coluna num volume só: lombar, hérnia, postura, pescoço e o quente e o frio. 46 páginas, com a fonte de cada afirmação." }
   ]
 };
