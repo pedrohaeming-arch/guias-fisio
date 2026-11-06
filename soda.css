@@ -84,3 +84,16 @@ input,select,textarea{background:rgba(255,255,255,.06);color:#fff;border-color:r
 /* Texto escuro sobre o rosa (contraste) */
 .step .dot,.badge,.tag-accent{color:#011d17 !important}
 .seal{width:124px;min-width:124px;height:124px;flex:0 0 124px !important}
+
+/* Celular com o guia aberto + páginas flutuando atrás (substitui a lata 3D do template) */
+.soda-stage{position:relative;width:min(100%,420px);aspect-ratio:4/5;margin:0 auto;perspective:1100px;transform-style:preserve-3d;transition:transform .2s ease-out;animation:soda-float 6s ease-in-out infinite}
+.soda-stage .phone{position:absolute;left:50%;top:50%;width:56%;aspect-ratio:9/19.5;translate:-50% -50%;border-radius:38px;padding:9px;background:linear-gradient(145deg,#2b2f36,#0b0d10);box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.18);z-index:2}
+.soda-stage .phone::before{content:"";position:absolute;top:16px;left:50%;width:28%;height:16px;translate:-50% 0;background:#0b0d10;border-radius:20px;z-index:3}
+.soda-stage .phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:30px;display:block}
+.soda-stage .pg{position:absolute;width:52%;border-radius:12px;box-shadow:0 24px 50px rgba(0,0,0,.45);z-index:1;transition:transform .2s ease-out}
+.soda-stage .pg1{left:-4%;top:14%;rotate:-12deg}
+.soda-stage .pg2{right:-4%;top:22%;rotate:10deg}
+.soda-fan{background:transparent !important;border:0 !important}
+.soda-fan img{object-fit:contain !important}
+@media (max-width:860px){ .soda-stage{width:min(100%,340px)} }
+@media (prefers-reduced-motion: reduce){ .soda-stage{animation:none} }
