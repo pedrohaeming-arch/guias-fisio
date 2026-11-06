@@ -1,0 +1,86 @@
+/* ==== Visual "Soda" (adaptado do template GetLayers) — carregar DEPOIS do estilo.css / <style> da página ====
+   Fundo radial verde-petróleo, vidro (glassmorphism), destaque rosa #fbcfe8, títulos Outfit, marca em Galada.
+   Sem modelos 3D nem imagens externas: a capa do guia flutua e inclina com o cursor; bolhas e "+" em CSS. */
+html:root, html:root:not([data-theme="light"]), html:root[data-theme]{
+  --bg:#011411; --surface:rgba(255,255,255,.055); --raise:rgba(255,255,255,.09);
+  --ink:#ffffff; --muted:#c3d6d0; --line:rgba(255,255,255,.14);
+  --brand:#99f6e4; --brand-ink:#011d17; --brand-soft:rgba(153,246,228,.12);
+  --accent:#fbcfe8; --accent-ink:#011d17; --accent-soft:rgba(251,207,232,.12);
+  --warn:rgba(250,204,21,.10); --warn-line:rgba(250,204,21,.45);
+  --danger:#fca5a5; --danger-soft:rgba(252,165,165,.12);
+  --radius:28px; --shadow:0 8px 32px rgba(0,0,0,.18); --shadow-lg:0 24px 60px rgba(0,0,0,.35);
+  --bg-inner:#0b8a78; --bg-mid:#044e3b; --bg-outer:#011411;
+  color-scheme:dark;
+}
+html body{
+  background:radial-gradient(circle at 50% 18%, var(--bg-inner) 0%, var(--bg-mid) 38%, var(--bg-outer) 85%) fixed, var(--bg-outer);
+  color:var(--ink); font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+h1,h2,h3,.price,.brand{font-family:'Outfit','Inter',sans-serif}
+h1{font-weight:900;letter-spacing:-.03em}
+h2{font-weight:800}
+a{color:var(--brand)}
+
+/* Marca em Galada (o "toque" cursivo do template) */
+.brand{font-family:'Galada',cursive !important;font-weight:400 !important;font-size:1.6rem !important;letter-spacing:0 !important;line-height:1}
+.brand small{font-family:'Manrope','Inter',sans-serif;font-size:.68rem !important;letter-spacing:.06em !important;text-transform:uppercase;margin-top:2px}
+
+/* Navegação de vidro */
+.nav{background:rgba(1,20,17,.55) !important;backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);border-bottom:1px solid var(--line) !important}
+.nav-links{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:5px;gap:4px !important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.nav-links a{font-family:'Manrope','Inter',sans-serif;padding:8px 16px;border-radius:100px;transition:background .3s,color .3s}
+.nav-links a:hover{background:#fbcfe8;color:#011d17 !important}
+.nav-links a.btn,.nav-links a.btn:hover{color:#011d17 !important}
+
+/* Botões em pílula: rosa para comprar, vidro escuro para o resto */
+.btn{border-radius:100px !important;background:#fbcfe8;color:#011d17 !important;font-family:'Outfit','Inter',sans-serif;font-weight:800;min-height:48px;box-shadow:0 10px 30px rgba(251,207,232,.18)}
+.btn:hover{box-shadow:0 14px 36px rgba(251,207,232,.3)}
+.btn.alt{background:rgba(0,0,0,.45);color:#fff !important;border:1px solid rgba(255,255,255,.18);box-shadow:none;padding-right:8px !important}
+.btn.alt::after{content:"+";display:inline-grid;place-items:center;width:34px;height:34px;margin-left:6px;border-radius:50%;background:#fbcfe8;color:#011d17;font-weight:900;font-size:1.25rem;line-height:1}
+.btn.alt:hover{background:rgba(0,0,0,.65)}
+.btn.ghost{background:transparent;color:#fff !important;border:1.5px solid rgba(255,255,255,.3);box-shadow:none}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline-color:#fbcfe8 !important}
+
+/* Cartões de vidro */
+.card,.prod,.level,.faq details,details{background:rgba(255,255,255,.055) !important;border:1px solid rgba(255,255,255,.12) !important;border-radius:28px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:none}
+.card:hover,.prod:hover{border-color:rgba(255,255,255,.3) !important}
+section[style*="--surface"],div[style*="--surface"],.trustbar{background:rgba(255,255,255,.035) !important;border-color:rgba(255,255,255,.08) !important}
+section[style*="--brand-soft"]{background:rgba(153,246,228,.08) !important}
+.eyebrow{background:rgba(255,255,255,.08) !important;color:#fbcfe8 !important;border:1px solid rgba(255,255,255,.18);font-family:'Manrope','Inter',sans-serif}
+.price{color:#fff}
+footer{background:rgba(0,0,0,.25) !important;border-top:1px solid var(--line) !important;color:var(--muted)}
+footer a{color:var(--muted)}
+input,select,textarea{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.2)}
+
+/* Hero: tela cheia, capa flutuando e inclinando com o cursor */
+.hero{position:relative;min-height:calc(100svh - 64px);display:flex;align-items:center;overflow:hidden;isolation:isolate}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero h1{font-size:clamp(2.3rem,5.2vw,4.2rem);line-height:1.02}
+.hero .img-slot{background:transparent !important;border:0 !important;box-shadow:none !important;perspective:1000px}
+.hero .img-slot img{border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:rotate(-4deg);transition:transform .2s ease-out;will-change:transform;animation:soda-float 6s ease-in-out infinite}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 70% 50%, rgba(16,185,129,.16) 0%, transparent 60%);pointer-events:none}
+@keyframes soda-float{0%,100%{translate:0 0}50%{translate:0 -18px}}
+
+/* Bolhas e "+" flutuantes (gerados pelo soda.js) */
+.soda-fx{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.soda-bubble{position:absolute;bottom:-40px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,.08) 60%, transparent 70%);border:1px solid rgba(255,255,255,.25);animation:soda-rise linear forwards}
+@keyframes soda-rise{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:.5}90%{opacity:.4}100%{transform:translateY(-110vh) translateX(30px);opacity:0}}
+.soda-plus{position:absolute;color:#fbcfe8;font:900 28px/1 'Outfit',sans-serif;opacity:.35;filter:drop-shadow(0 6px 12px rgba(0,0,0,.3));transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+
+@media (max-width:860px){
+  .hero{min-height:auto;padding-block:40px 48px}
+  .nav-links{background:none;border:0;padding:0;box-shadow:none}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero .img-slot img{animation:none}
+  .soda-fx{display:none}
+}
+
+/* Barras fixas precisam de fundo sólido (o vidro deixa o texto de baixo aparecer) */
+.stickybar{background:rgba(1,20,17,.94) !important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.editbar{background:#000 !important;color:#fff !important}
+.hero .img-slot.filled{background:transparent !important}
+@media (max-width:700px){ .soda-plus{display:none} }
+/* Texto escuro sobre o rosa (contraste) */
+.step .dot,.badge,.tag-accent{color:#011d17 !important}
+.seal{width:124px;min-width:124px;height:124px;flex:0 0 124px !important}
